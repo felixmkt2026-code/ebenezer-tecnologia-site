@@ -141,7 +141,9 @@ html, body{
 <style id="ebz-hero-style">
 .ebz-eyebrow{display:block;text-align:center;font-size:12px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:#7c8cf5;margin:0 0 16px;}
 .ebz-quote{font-size:24px;font-weight:700;line-height:1.4;text-align:center;max-width:720px;margin:0 auto;color:#fff;}
+.ebz-quote-small{font-size:14px;font-weight:600;color:#8a8a94;margin-bottom:0;}
 .ebz-quote-sub{font-size:15px;color:#a3a3af;text-align:center;max-width:600px;margin:16px auto 0;line-height:1.6;}
+h1 .ebz-quote-sub{font-size:16px;font-weight:400;color:#a3a3af;max-width:520px;margin-left:auto;margin-right:auto;}
 .ebz-logo-circle{display:block;margin:0 auto 24px;width:150px;height:150px;border-radius:28px;object-fit:cover;border:1px solid rgba(255,255,255,0.12);box-shadow:0 25px 70px rgba(91,108,245,0.3);}
 .ebz-pill{display:table;margin:0 auto 22px;padding:9px 20px;border:1px solid rgba(255,255,255,0.14);border-radius:999px;font-size:12px;font-weight:600;color:#c9c9d6;background:rgba(255,255,255,0.05);}
 .ebz-blue-degrade{background:linear-gradient(90deg,#5b6cf5 0%,#8f6cf5 50%,#5b6cf5 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
@@ -184,16 +186,25 @@ button.ebz-dot.active{background:#5B6CF5 !important;}
 .ebz-section-head{text-align:center;max-width:700px;margin:0 auto 40px;}
 .ebz-section-head h2{font-size:32px;font-weight:700;color:#fff;margin:10px 0 0;}
 .ebz-services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;}
-.ebz-service-card{background:#0d0d10;border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:28px 24px;}
+.ebz-service-card{position:relative;background:linear-gradient(180deg,#14141a,#0d0d10);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:30px 26px;overflow:hidden;transition:border-color .3s,transform .3s,box-shadow .3s;}
+.ebz-service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#5B6CF5,#8f6cf5);transform:scaleX(0);transform-origin:left;transition:transform .35s;}
+.ebz-service-card:hover{border-color:rgba(91,108,245,0.5);transform:translateY(-6px);box-shadow:0 20px 40px rgba(91,108,245,0.15);}
+.ebz-service-card:hover::before{transform:scaleX(1);}
+.ebz-service-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#5B6CF5,#8f6cf5);box-shadow:0 10px 24px rgba(91,108,245,0.35);margin-bottom:18px;}
+.ebz-service-icon svg{width:24px;height:24px;}
 .ebz-service-card h3{color:#fff;font-size:18px;margin:0 0 10px;}
 .ebz-service-card p{color:#a3a3af;font-size:14px;line-height:1.6;margin:0;}
 .ebz-about{max-width:760px;margin:0 auto;text-align:center;}
 .ebz-about h2{font-size:32px;font-weight:700;color:#fff;margin:10px 0 22px;}
 .ebz-about p{color:#b6b6c2;font-size:15px;line-height:1.7;margin:0 0 14px;}
 .ebz-diff-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;}
-.ebz-diff-item{background:#0d0d10;border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:6px;}
+.ebz-diff-item{position:relative;background:linear-gradient(180deg,#14141a,#0d0d10);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px 22px;display:flex;flex-direction:column;gap:6px;overflow:hidden;transition:border-color .3s,transform .3s,box-shadow .3s;}
+.ebz-diff-item::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#5B6CF5,#8f6cf5);transform:scaleX(0);transform-origin:left;transition:transform .35s;}
+.ebz-diff-item:hover{border-color:rgba(91,108,245,0.5);transform:translateY(-5px);box-shadow:0 18px 36px rgba(91,108,245,0.14);}
+.ebz-diff-item:hover::before{transform:scaleX(1);}
+.ebz-diff-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#5B6CF5,#8f6cf5);box-shadow:0 8px 20px rgba(91,108,245,0.35);margin-bottom:6px;}
+.ebz-diff-icon svg{width:20px;height:20px;}
 .ebz-diff-item strong{color:#fff;font-size:15px;}
-.ebz-diff-item strong::before{content:"✓ ";color:#5B6CF5;}
 .ebz-diff-item span{color:#a3a3af;font-size:13px;line-height:1.5;}
 .ebz-team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;}
 .ebz-team-card{position:relative;background:linear-gradient(180deg,#131318,#0a0a0d);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:34px 28px;text-align:center;transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .4s,box-shadow .4s;overflow:hidden;}
@@ -214,11 +225,14 @@ button.ebz-dot.active{background:#5B6CF5 !important;}
 .ebz-team-skills{list-style:none;margin:0;padding:0;text-align:left;display:flex;flex-direction:column;gap:9px;position:relative;}
 .ebz-team-skills li{color:#c9c9d6;font-size:13px;padding-left:20px;position:relative;}
 .ebz-team-skills li::before{content:"";position:absolute;left:0;top:7px;width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,#5B6CF5,#8f6cf5);box-shadow:0 0 8px rgba(91,108,245,0.6);}
-.ebz-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;}
-.ebz-step{text-align:center;}
-.ebz-step-num{display:block;font-size:32px;font-weight:800;background:linear-gradient(90deg,#5B6CF5,#8f6cf5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;}
-.ebz-step h3{color:#fff;font-size:16px;margin:0 0 6px;}
+.ebz-steps{display:flex;align-items:stretch;justify-content:center;gap:8px;flex-wrap:wrap;}
+.ebz-step{position:relative;text-align:center;flex:1 1 200px;max-width:230px;background:linear-gradient(180deg,#14141a,#0d0d10);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:26px 18px 22px;transition:border-color .3s,transform .3s,box-shadow .3s;}
+.ebz-step:hover{border-color:rgba(91,108,245,0.5);transform:translateY(-5px);box-shadow:0 18px 36px rgba(91,108,245,0.14);}
+.ebz-step-num{display:flex;align-items:center;justify-content:center;width:38px;height:38px;margin:0 auto 14px;border-radius:50%;background:linear-gradient(135deg,#5B6CF5,#8f6cf5);color:#fff;font-size:15px;font-weight:800;box-shadow:0 8px 20px rgba(91,108,245,0.35);}
+.ebz-step h3{color:#fff;font-size:15.5px;margin:0 0 6px;}
 .ebz-step p{color:#a3a3af;font-size:13px;margin:0;}
+.ebz-step-arrow{display:flex;align-items:center;justify-content:center;color:#5B6CF5;font-size:20px;font-weight:700;opacity:.6;flex:0 0 auto;}
+@media(max-width:820px){.ebz-step-arrow{display:none;}}
 .ebz-testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:1000px;margin:0 auto 30px;padding:0 24px;}
 .ebz-testimonial-card{background:#0d0d10;border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:24px;}
 .ebz-testimonial-card p{color:#c9c9d6;font-size:14px;line-height:1.6;margin:0 0 16px;font-style:italic;}
@@ -296,12 +310,12 @@ button.ebz-dot.active{background:#5B6CF5 !important;}
 				<div class="elementor-element elementor-element-79983bd elementor-widget elementor-widget-heading ativo7" data-id="79983bd" data-element_type="widget" data-e-type="widget" data-settings="{" _animation":"fadeinup","_animation_delay":100,"_animation_mobile":"fadeinup"}"="" data-widget_type="heading.default">
 					<img src="images/logo-ebenezer.jpg" alt="Ebenézer Tecnologia" class="ebz-logo-circle">
 <span class="ebz-eyebrow">Ebenézer Tecnologia</span>
-<h2 class="ebz-quote">"Até aqui nos ajudou o Senhor." <span class="ebz-blue-degrade">Ebenézer</span>, a pedra de ajuda para o seu próximo passo.</h2>
-<p class="ebz-quote-sub">É com esse propósito que unimos fé, tecnologia e excelência: cada site e aplicativo que construímos é mais uma pedra no caminho do crescimento do seu negócio.</p>				</div>
+<h2 class="ebz-quote ebz-quote-small">"Até aqui nos ajudou o Senhor." <span class="ebz-blue-degrade">Ebenézer</span>.</h2>
+				</div>
 				<div class="elementor-element elementor-element-9dd0544 elementor-widget__width-initial elementor-widget elementor-widget-heading" data-id="9dd0544" data-element_type="widget" data-e-type="widget" data-settings="{" _animation":"fadeinup","_animation_delay":450,"_animation_mobile":"fadeinup"}"="" data-widget_type="heading.default">
 					<div class="ebz-pill">Sites · Aplicativos · Soluções Digitais</div>
-<h1 class="elementor-heading-title elementor-size-default">Tecnologia com <span class="ebz-blue-degrade">propósito</span> para empresas que
-<span class="ebz-blue-degrade">querem crescer</span> de verdade</h1>				</div>
+<h1 class="elementor-heading-title elementor-size-default">Sites e apps que <span class="ebz-blue-degrade">vendem</span>
+<span class="ebz-quote-sub" style="display:block;margin-top:14px;">Feito pra converter, não só pra existir.</span></h1>				</div>
 				<div class="elementor-element elementor-element-f943033 elementor-widget__width-initial elementor-absolute elementor-widget elementor-widget-html" data-id="f943033" data-element_type="widget" data-e-type="widget" data-settings="{" _position":"absolute"}"="" data-widget_type="html.default">
 					<!-- ================================================================
      PULSO DE LUZ NOS PONTINHOS  |  Ebenézer Tecnologia
@@ -818,6 +832,163 @@ height: 800px;
 				</div>
 					</div>
 				</div>
+		<div id="servicos" class="ebz-section">
+			<div class="ebz-section-head">
+				<span class="ebz-eyebrow">O que fazemos</span>
+				<h2>Nossos <span class="ebz-blue-degrade">serviços</span></h2>
+			</div>
+			<div class="ebz-services-grid">
+				<div class="ebz-service-card">
+					<div class="ebz-service-icon">
+						<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+					</div>
+					<h3>Sites institucionais</h3>
+					<p>Sites rápidos, responsivos e otimizados para transmitir credibilidade e converter visitantes em clientes. Landing pages, sites institucionais, e-commerces e blogs, sempre com foco em performance e SEO.</p>
+				</div>
+				<div class="ebz-service-card">
+					<div class="ebz-service-icon">
+						<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
+					</div>
+					<h3>Aplicativos sob medida</h3>
+					<p>Apps mobile e web desenvolvidos para resolver problemas reais do seu negócio, com uma experiência fluida para o usuário final. Do MVP ao produto completo.</p>
+				</div>
+				<div class="ebz-service-card">
+					<div class="ebz-service-icon">
+						<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+					</div>
+					<h3>Soluções digitais</h3>
+					<p>Automação de processos, integrações entre sistemas, painéis administrativos e ferramentas internas para destravar a operação da sua empresa e ganhar tempo.</p>
+				</div>
+			</div>
+		</div>
+		<div id="projetos" class="elementor-element elementor-element-9c35a76 e-flex e-con-boxed e-con e-parent" data-id="9c35a76" data-element_type="container" data-e-type="container" data-settings="{" background_background":"classic"}"="">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-7e88233 elementor-widget__width-initial elementor-hidden-desktop elementor-widget elementor-widget-heading" data-id="7e88233" data-element_type="widget" data-e-type="widget" data-settings="{" _animation":"fadeinup","_animation_delay":400,"_animation_mobile":"fadeinup"}"="" data-widget_type="heading.default">
+					<h1 class="elementor-heading-title elementor-size-default">Sites, lojas e apps
+<span class="preco-degrade">de demonstração e já entregues</span></h1>				</div>
+				<div class="elementor-element elementor-element-bdab8cf elementor-widget__width-initial elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-heading" data-id="bdab8cf" data-element_type="widget" data-e-type="widget" data-settings="{" _animation_mobile":"fadeinup"}"="" data-widget_type="heading.default">
+					<h1 class="elementor-heading-title elementor-size-default">Sites, lojas e apps<br>
+<span class="preco-degrade">de demonstração e já entregues</span></h1>				</div>
+		<div class="elementor-element elementor-element-aabc9ee e-con-full e-flex e-con e-child" data-id="aabc9ee" data-element_type="container" data-e-type="container" data-settings="{" background_background":"classic"}"="">
+				<div class="ebz-project-hero">
+					<div class="ebz-project-hero-slide active" data-index="0" style="opacity:1;visibility:visible;z-index:2;pointer-events:auto;">
+						<img class="ebz-no-hue" src="images/ct-manu-teixeira.jpg" alt="CT Manu Teixeira">
+						<div class="ebz-project-hero-info">
+							<span class="ebz-project-tag">Site</span>
+							<h3>CT Manu Teixeira</h3>
+							<p>Site institucional para academia premium em Brusque-SC, com planos e depoimentos reais de alunos.</p>
+							<a href="https://ct-manu-teixeira.vercel.app" target="_blank" rel="noopener" class="ebz-project-hero-btn">Ver projeto</a>
+						</div>
+					</div>
+					<div class="ebz-project-hero-slide" data-index="1">
+						<img class="ebz-no-hue" loading="lazy" src="images/ytallo-barber-shop.jpg" alt="Ytallo Barber Shop">
+						<div class="ebz-project-hero-info">
+							<span class="ebz-project-tag">Site</span>
+							<h3>Ytallo Barber Shop</h3>
+							<p>Site premium para barbearia no Rio de Janeiro, com catálogo de cortes e agendamento via WhatsApp.</p>
+							<a href="https://ytallo-barber-shop.vercel.app" target="_blank" rel="noopener" class="ebz-project-hero-btn">Ver projeto</a>
+						</div>
+					</div>
+					<div class="ebz-project-hero-slide" data-index="2">
+						<img class="ebz-no-hue" loading="lazy" src="images/bruna-almeida-personal.jpg" alt="Bruna Almeida Personal">
+						<div class="ebz-project-hero-info">
+							<span class="ebz-project-tag">Site</span>
+							<h3>Bruna Almeida Personal</h3>
+							<p>Site para personal trainer especialista em treinamento feminino, com planos e agendamento pelo WhatsApp.</p>
+							<a href="https://bruna-almeida-personal.vercel.app" target="_blank" rel="noopener" class="ebz-project-hero-btn">Ver projeto</a>
+						</div>
+					</div>
+					<div class="ebz-project-hero-slide" data-index="3">
+						<img class="ebz-no-hue" loading="lazy" src="images/big-style-for-men.jpg" alt="Big Style For Men">
+						<div class="ebz-project-hero-info">
+							<span class="ebz-project-tag">Loja Virtual</span>
+							<h3>Big Style For Men</h3>
+							<p>Catálogo premium de cosméticos masculinos com quiz de recomendação de produtos e pedido finalizado via WhatsApp.</p>
+							<a href="https://big-style-for-men.vercel.app" target="_blank" rel="noopener" class="ebz-project-hero-btn">Ver projeto</a>
+						</div>
+					</div>
+					<div class="ebz-project-hero-slide" data-index="4">
+						<img class="ebz-no-hue" loading="lazy" src="images/forfit.jpg" alt="ForFit">
+						<div class="ebz-project-hero-info">
+							<span class="ebz-project-tag">Aplicativo</span>
+							<h3>ForFit</h3>
+							<p>App de treino e dieta 100% personalizados por inteligência artificial, com Personal IA integrado.</p>
+							<a href="https://forgefit-sigma.vercel.app" target="_blank" rel="noopener" class="ebz-project-hero-btn">Ver projeto</a>
+						</div>
+					</div>
+					<div class="ebz-project-hero-slide" data-index="5">
+						<img class="ebz-no-hue" loading="lazy" src="images/shalomfit.jpg" alt="ShalomFit">
+						<div class="ebz-project-hero-info">
+							<span class="ebz-project-tag">Aplicativo</span>
+							<h3>ShalomFit</h3>
+							<p>Aplicativo devocional espiritual com inteligência artificial, com devocionais e orações personalizados.</p>
+							<a href="https://shalomfit.vercel.app" target="_blank" rel="noopener" class="ebz-project-hero-btn">Ver projeto</a>
+						</div>
+					</div>
+					<div class="ebz-project-hero-slide" data-index="6">
+						<img class="ebz-no-hue" loading="lazy" src="images/evolucao-design.jpg" alt="Evolução Design">
+						<div class="ebz-project-hero-info">
+							<span class="ebz-project-tag">Site</span>
+							<h3>Evolução Design</h3>
+							<p>Plataforma de cursos de Photoshop e Motion Design, com packs exclusivos e comunidade de mais de 8 mil alunos.</p>
+							<a href="https://evolucaodesign.com.br/" target="_blank" rel="noopener" class="ebz-project-hero-btn">Ver projeto</a>
+						</div>
+					</div>
+					<div class="ebz-project-hero-dots">
+						<button class="ebz-dot active" data-goto="0" aria-label="Projeto 1"></button>
+						<button class="ebz-dot" data-goto="1" aria-label="Projeto 2"></button>
+						<button class="ebz-dot" data-goto="2" aria-label="Projeto 3"></button>
+						<button class="ebz-dot" data-goto="3" aria-label="Projeto 4"></button>
+						<button class="ebz-dot" data-goto="4" aria-label="Projeto 5"></button>
+						<button class="ebz-dot" data-goto="5" aria-label="Projeto 6"></button>
+						<button class="ebz-dot" data-goto="6" aria-label="Projeto 7"></button>
+					</div>
+				</div>
+				<script>
+				(function(){
+					var slides = document.querySelectorAll('.ebz-project-hero-slide');
+					var dots = document.querySelectorAll('.ebz-dot');
+					var current = 0, timer;
+					function show(i){
+						slides.forEach(function(s,idx){
+							var on = idx===i;
+							s.classList.toggle('active', on);
+							s.style.opacity = on ? '1' : '0';
+							s.style.visibility = on ? 'visible' : 'hidden';
+							s.style.zIndex = on ? '2' : '1';
+							s.style.pointerEvents = on ? 'auto' : 'none';
+						});
+						dots.forEach(function(d,idx){ d.classList.toggle('active', idx===i); });
+						current = i;
+					}
+					function next(){ show((current+1) % slides.length); }
+					function startAuto(){ clearInterval(timer); timer = setInterval(next, 5000); }
+					dots.forEach(function(d){
+						d.addEventListener('click', function(){
+							show(parseInt(d.getAttribute('data-goto'),10));
+							startAuto();
+						});
+					});
+					startAuto();
+				})();
+				</script>
+				</div>
+		<div class="ebz-cases-cta">
+			<a href="cases.html">Ver mais cases de sucesso →</a>
+		</div>
+		<div class="elementor-element elementor-element-1dab76d e-con-full e-flex e-con e-child" data-id="1dab76d" data-element_type="container" data-e-type="container" data-settings="{" background_background":"classic"}"="">
+				<div class="elementor-element elementor-element-708ff99 elementor-align-justify elementor-widget__width-inherit elementor-widget elementor-widget-button" data-id="708ff99" data-element_type="widget" data-e-type="widget" data-widget_type="button.default">
+										<a class="elementor-button elementor-button-link elementor-size-sm" href="https://wa.me/5547991915045?text=Ol%C3%A1!%20Quero%20conhecer%20os%20projetos%20da%20Eben%C3%A9zer%20Tecnologia.">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-icon">
+				<svg aria-hidden="true" class="e-font-icon-svg e-fab-behance" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path d="M232 237.2c31.8-15.2 48.4-38.2 48.4-74 0-70.6-52.6-87.8-113.3-87.8H0v354.4h171.8c64.4 0 124.9-30.9 124.9-102.9 0-44.5-21.1-77.4-64.7-89.7zM77.9 135.9H151c28.1 0 53.4 7.9 53.4 40.5 0 30.1-19.7 42.2-47.5 42.2h-79v-82.7zm83.3 233.7H77.9V272h84.9c34.3 0 56 14.3 56 50.6 0 35.8-25.9 47-57.6 47zm358.5-240.7H376V94h143.7v34.9zM576 305.2c0-75.9-44.4-139.2-124.9-139.2-78.2 0-131.3 58.8-131.3 135.8 0 79.9 50.3 134.7 131.3 134.7 61.3 0 101-27.6 120.1-86.3H509c-6.7 21.9-34.3 33.5-55.7 33.5-41.3 0-63-24.2-63-65.3h185.1c.3-4.2.6-8.7.6-13.2zM390.4 274c2.3-33.7 24.7-54.8 58.5-54.8 35.4 0 53.2 20.8 56.2 54.8H390.4z"></path></svg>			</span>
+									<span class="elementor-button-text">Falar no WhatsApp</span>
+					</span>
+					</a>
+								</div>
+				</div>
+					</div>
+				</div>
 <div id="modelos" class="ebz-section">
 				<style>
 				.ebz-esteira{position:relative;width:100%;max-width:100%;overflow:hidden;-webkit-mask-image:linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);mask-image:linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);}
@@ -955,108 +1126,28 @@ height: 800px;
 					</div>
 				</div>
 			</div>
-		<div id="servicos" class="ebz-section">
-			<div class="ebz-section-head">
-				<span class="ebz-eyebrow">O que fazemos</span>
-				<h2>Nossos <span class="ebz-blue-degrade">serviços</span></h2>
-			</div>
-			<div class="ebz-services-grid">
-				<div class="ebz-service-card">
-					<h3>Sites institucionais</h3>
-					<p>Sites rápidos, responsivos e otimizados para transmitir credibilidade e converter visitantes em clientes. Landing pages, sites institucionais, e-commerces e blogs, sempre com foco em performance e SEO.</p>
-				</div>
-				<div class="ebz-service-card">
-					<h3>Aplicativos sob medida</h3>
-					<p>Apps mobile e web desenvolvidos para resolver problemas reais do seu negócio, com uma experiência fluida para o usuário final. Do MVP ao produto completo.</p>
-				</div>
-				<div class="ebz-service-card">
-					<h3>Soluções digitais</h3>
-					<p>Automação de processos, integrações entre sistemas, painéis administrativos e ferramentas internas para destravar a operação da sua empresa e ganhar tempo.</p>
-				</div>
-			</div>
-		</div>
-		<div id="sobre" class="ebz-section">
-			<div class="ebz-about">
-				<span class="ebz-eyebrow">Quem somos</span>
-				<h2>Sobre a <span class="ebz-blue-degrade">Ebenézer</span></h2>
-				<p>A Ebenézer Tecnologia nasceu com um propósito simples: usar a tecnologia como ferramenta de crescimento para negócios que querem ir além. Unimos fé, excelência técnica e visão de negócio para entregar sites e aplicativos que não são apenas bonitos, são construídos para gerar resultado.</p>
-				<p>Já ajudamos mais de 120 empresas, de diferentes portes e segmentos, a fortalecer sua marca e vender mais no digital.</p>
-			</div>
-		</div>
-		<div id="equipe" class="ebz-section">
-			<div class="ebz-section-head">
-				<span class="ebz-eyebrow">Quem faz acontecer</span>
-				<h2>Nossa <span class="ebz-blue-degrade">equipe</span></h2>
-			</div>
-			<div class="ebz-team-grid">
-				<div class="ebz-team-card">
-					<div class="ebz-team-avatar-ring">
-						<img class="ebz-no-hue" loading="lazy" src="images/victor-foto.png" alt="VictorSaaS">
-					</div>
-					<h3>VictorSaaS</h3>
-					<p class="ebz-team-role">Desenvolvedor &amp; Designer</p>
-					<p class="ebz-team-bio">Desenvolvedor e designer focado na criação de sistemas SaaS, dashboards e interfaces modernas para empresas.</p>
-					<ul class="ebz-team-skills">
-						<li>Sistemas SaaS personalizados</li>
-						<li>Dashboards inteligentes</li>
-						<li>Interfaces modernas e intuitivas</li>
-						<li>Soluções digitais para empresas</li>
-					</ul>
-				</div>
-				<div class="ebz-team-card">
-					<div class="ebz-team-avatar-ring">
-						<img class="ebz-no-hue" loading="lazy" src="images/felix-foto.png" alt="Felix Bueno">
-					</div>
-					<h3>Felix Bueno</h3>
-					<p class="ebz-team-role">Criador de Conteúdo Digital &amp; Desenvolvedor</p>
-					<p class="ebz-team-bio">Transformo ideias em sites, aplicativos e soluções digitais profissionais.</p>
-					<ul class="ebz-team-skills">
-						<li>Sites profissionais</li>
-						<li>Aplicativos</li>
-						<li>Landing Pages</li>
-						<li>Projetos digitais personalizados</li>
-					</ul>
-				</div>
-				<div class="ebz-team-card">
-					<div class="ebz-team-avatar-ring">
-						<img class="ebz-no-hue" loading="lazy" src="images/jonatas-foto.png" alt="Jonatas Cardoso">
-					</div>
-					<h3>Jonatas Cardoso</h3>
-					<p class="ebz-team-role">Designer Gráfico</p>
-					<p class="ebz-team-bio">Especialista em transformar ideias em designs criativos e profissionais.</p>
-					<ul class="ebz-team-skills">
-						<li>+14 anos de experiência</li>
-						<li>Professor e criador de conteúdo</li>
-						<li>Cursos, packs e recursos para designers</li>
-					</ul>
-				</div>
-				<div class="ebz-team-card">
-					<div class="ebz-team-avatar-ring">
-						<img class="ebz-no-hue" loading="lazy" src="images/integrante4-foto.png" alt="João Henrique">
-					</div>
-					<h3>João Henrique</h3>
-					<p class="ebz-team-role">Desenvolvedor de Sites &amp; Apps</p>
-					<p class="ebz-team-bio">Especializado em desenvolvimento de sites e aplicativos, com foco em criar soluções modernas, funcionais e profissionais.</p>
-					<ul class="ebz-team-skills">
-						<li>Desenvolvimento de sites</li>
-						<li>Desenvolvimento de aplicativos</li>
-						<li>Interfaces modernas e responsivas</li>
-						<li>Soluções rápidas e funcionais</li>
-						<li>Projetos personalizados</li>
-					</ul>
-				</div>
-			</div>
-		</div>
 		<div class="ebz-section">
 			<div class="ebz-section-head">
 				<span class="ebz-eyebrow">Por que a Ebenézer</span>
 				<h2>Nossos <span class="ebz-blue-degrade">diferenciais</span></h2>
 			</div>
 			<div class="ebz-diff-grid">
-				<div class="ebz-diff-item"><strong>Atendimento nacional</strong><span>Trabalhamos com empresas de todo o Brasil, 100% remoto.</span></div>
-				<div class="ebz-diff-item"><strong>Foco em resultado</strong><span>Cada entrega é pensada para gerar retorno, não só estética.</span></div>
-				<div class="ebz-diff-item"><strong>Suporte contínuo</strong><span>Acompanhamento mesmo depois do lançamento.</span></div>
-				<div class="ebz-diff-item"><strong>Entrega no prazo</strong><span>Projetos concluídos em média em 3 a 6 semanas, sem enrolação.</span></div>
+				<div class="ebz-diff-item">
+					<div class="ebz-diff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+					<strong>Atendimento nacional</strong><span>Trabalhamos com empresas de todo o Brasil, 100% remoto.</span>
+				</div>
+				<div class="ebz-diff-item">
+					<div class="ebz-diff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="#fff"/></svg></div>
+					<strong>Foco em resultado</strong><span>Cada entrega é pensada para gerar retorno, não só estética.</span>
+				</div>
+				<div class="ebz-diff-item">
+					<div class="ebz-diff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+					<strong>Suporte contínuo</strong><span>Acompanhamento mesmo depois do lançamento.</span>
+				</div>
+				<div class="ebz-diff-item">
+					<div class="ebz-diff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+					<strong>Entrega no prazo</strong><span>Projetos concluídos em média em 3 a 6 semanas, sem enrolação.</span>
+				</div>
 			</div>
 		</div>
 		<div id="processo" class="ebz-section">
@@ -1066,8 +1157,11 @@ height: 800px;
 			</div>
 			<div class="ebz-steps">
 				<div class="ebz-step"><span class="ebz-step-num">01</span><h3>Entendimento do negócio</h3><p>Briefing, público, objetivos.</p></div>
+				<div class="ebz-step-arrow">→</div>
 				<div class="ebz-step"><span class="ebz-step-num">02</span><h3>Design e prototipagem</h3><p>Identidade visual e experiência.</p></div>
+				<div class="ebz-step-arrow">→</div>
 				<div class="ebz-step"><span class="ebz-step-num">03</span><h3>Desenvolvimento</h3><p>Codificação com performance e segurança.</p></div>
+				<div class="ebz-step-arrow">→</div>
 				<div class="ebz-step"><span class="ebz-step-num">04</span><h3>Lançamento e suporte</h3><p>Acompanhamento pós-entrega.</p></div>
 			</div>
 		</div>
@@ -1133,176 +1227,99 @@ height: 800px;
 								</div>
 					</div>
 				</div>
-		<div id="projetos" class="elementor-element elementor-element-9c35a76 e-flex e-con-boxed e-con e-parent" data-id="9c35a76" data-element_type="container" data-e-type="container" data-settings="{" background_background":"classic"}"="">
-					<div class="e-con-inner">
-				<div class="elementor-element elementor-element-7e88233 elementor-widget__width-initial elementor-hidden-desktop elementor-widget elementor-widget-heading" data-id="7e88233" data-element_type="widget" data-e-type="widget" data-settings="{" _animation":"fadeinup","_animation_delay":400,"_animation_mobile":"fadeinup"}"="" data-widget_type="heading.default">
-					<h1 class="elementor-heading-title elementor-size-default">Sites, lojas e apps
-<span class="preco-degrade">de demonstração e já entregues</span></h1>				</div>
-				<div class="elementor-element elementor-element-bdab8cf elementor-widget__width-initial elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-heading" data-id="bdab8cf" data-element_type="widget" data-e-type="widget" data-settings="{" _animation_mobile":"fadeinup"}"="" data-widget_type="heading.default">
-					<h1 class="elementor-heading-title elementor-size-default">Sites, lojas e apps<br>
-<span class="preco-degrade">de demonstração e já entregues</span></h1>				</div>
-		<div class="elementor-element elementor-element-aabc9ee e-con-full e-flex e-con e-child" data-id="aabc9ee" data-element_type="container" data-e-type="container" data-settings="{" background_background":"classic"}"="">
-				<div class="ebz-project-hero">
-					<div class="ebz-project-hero-slide active" data-index="0" style="opacity:1;visibility:visible;z-index:2;pointer-events:auto;">
-						<img class="ebz-no-hue" src="images/ct-manu-teixeira.jpg" alt="CT Manu Teixeira">
-						<div class="ebz-project-hero-info">
-							<span class="ebz-project-tag">Site</span>
-							<h3>CT Manu Teixeira</h3>
-							<p>Site institucional para academia premium em Brusque-SC, com planos e depoimentos reais de alunos.</p>
-							<a href="https://ct-manu-teixeira.vercel.app" target="_blank" rel="noopener" class="ebz-project-hero-btn">Ver projeto</a>
-						</div>
-					</div>
-					<div class="ebz-project-hero-slide" data-index="1">
-						<img class="ebz-no-hue" loading="lazy" src="images/ytallo-barber-shop.jpg" alt="Ytallo Barber Shop">
-						<div class="ebz-project-hero-info">
-							<span class="ebz-project-tag">Site</span>
-							<h3>Ytallo Barber Shop</h3>
-							<p>Site premium para barbearia no Rio de Janeiro, com catálogo de cortes e agendamento via WhatsApp.</p>
-							<a href="https://ytallo-barber-shop.vercel.app" target="_blank" rel="noopener" class="ebz-project-hero-btn">Ver projeto</a>
-						</div>
-					</div>
-					<div class="ebz-project-hero-slide" data-index="2">
-						<img class="ebz-no-hue" loading="lazy" src="images/bruna-almeida-personal.jpg" alt="Bruna Almeida Personal">
-						<div class="ebz-project-hero-info">
-							<span class="ebz-project-tag">Site</span>
-							<h3>Bruna Almeida Personal</h3>
-							<p>Site para personal trainer especialista em treinamento feminino, com planos e agendamento pelo WhatsApp.</p>
-							<a href="https://bruna-almeida-personal.vercel.app" target="_blank" rel="noopener" class="ebz-project-hero-btn">Ver projeto</a>
-						</div>
-					</div>
-					<div class="ebz-project-hero-slide" data-index="3">
-						<img class="ebz-no-hue" loading="lazy" src="images/big-style-for-men.jpg" alt="Big Style For Men">
-						<div class="ebz-project-hero-info">
-							<span class="ebz-project-tag">Loja Virtual</span>
-							<h3>Big Style For Men</h3>
-							<p>Catálogo premium de cosméticos masculinos com quiz de recomendação de produtos e pedido finalizado via WhatsApp.</p>
-							<a href="https://big-style-for-men.vercel.app" target="_blank" rel="noopener" class="ebz-project-hero-btn">Ver projeto</a>
-						</div>
-					</div>
-					<div class="ebz-project-hero-slide" data-index="4">
-						<img class="ebz-no-hue" loading="lazy" src="images/forfit.jpg" alt="ForFit">
-						<div class="ebz-project-hero-info">
-							<span class="ebz-project-tag">Aplicativo</span>
-							<h3>ForFit</h3>
-							<p>App de treino e dieta 100% personalizados por inteligência artificial, com Personal IA integrado.</p>
-							<a href="https://forgefit-sigma.vercel.app" target="_blank" rel="noopener" class="ebz-project-hero-btn">Ver projeto</a>
-						</div>
-					</div>
-					<div class="ebz-project-hero-slide" data-index="5">
-						<img class="ebz-no-hue" loading="lazy" src="images/shalomfit.jpg" alt="ShalomFit">
-						<div class="ebz-project-hero-info">
-							<span class="ebz-project-tag">Aplicativo</span>
-							<h3>ShalomFit</h3>
-							<p>Aplicativo devocional espiritual com inteligência artificial, com devocionais e orações personalizados.</p>
-							<a href="https://shalomfit.vercel.app" target="_blank" rel="noopener" class="ebz-project-hero-btn">Ver projeto</a>
-						</div>
-					</div>
-					<div class="ebz-project-hero-slide" data-index="6">
-						<img class="ebz-no-hue" loading="lazy" src="images/evolucao-design.jpg" alt="Evolução Design">
-						<div class="ebz-project-hero-info">
-							<span class="ebz-project-tag">Site</span>
-							<h3>Evolução Design</h3>
-							<p>Plataforma de cursos de Photoshop e Motion Design, com packs exclusivos e comunidade de mais de 8 mil alunos.</p>
-							<a href="https://evolucaodesign.com.br/" target="_blank" rel="noopener" class="ebz-project-hero-btn">Ver projeto</a>
-						</div>
-					</div>
-					<div class="ebz-project-hero-dots">
-						<button class="ebz-dot active" data-goto="0" aria-label="Projeto 1"></button>
-						<button class="ebz-dot" data-goto="1" aria-label="Projeto 2"></button>
-						<button class="ebz-dot" data-goto="2" aria-label="Projeto 3"></button>
-						<button class="ebz-dot" data-goto="3" aria-label="Projeto 4"></button>
-						<button class="ebz-dot" data-goto="4" aria-label="Projeto 5"></button>
-						<button class="ebz-dot" data-goto="5" aria-label="Projeto 6"></button>
-						<button class="ebz-dot" data-goto="6" aria-label="Projeto 7"></button>
-					</div>
+		<div id="sobre" class="ebz-section">
+			<style>
+			.ebz-historia{max-width:780px;margin:0 auto;text-align:center;position:relative;}
+			.ebz-historia-quote-mark{position:absolute;top:-64px;left:50%;transform:translateX(-50%);font-family:Georgia,'Times New Roman',serif;font-size:200px;line-height:1;color:rgba(91,108,245,0.09);pointer-events:none;user-select:none;z-index:0;}
+			@media(max-width:600px){.ebz-historia-quote-mark{font-size:110px;top:-38px;}.ebz-historia-lead{font-size:19px;}.ebz-historia-stats{gap:12px;}.ebz-historia-stat{padding:16px 20px;}}
+			.ebz-historia > *{position:relative;z-index:1;}
+			.ebz-historia-lead{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:23px;line-height:1.55;color:#f1f1f4;font-weight:600;margin:0 0 14px;}
+			.ebz-historia-rule{width:56px;height:3px;margin:0 auto 32px;background:linear-gradient(90deg,#5B6CF5,#8f6cf5);border-radius:3px;}
+			.ebz-historia p{color:#a3a3af;font-size:15.5px;line-height:1.85;margin:0 0 18px;text-align:left;max-width:660px;margin-left:auto;margin-right:auto;}
+			.ebz-historia p:first-of-type::first-letter{font-family:Georgia,'Times New Roman',serif;font-size:54px;font-weight:800;float:left;line-height:0.78;margin:5px 10px 0 0;background:linear-gradient(135deg,#5B6CF5,#8f6cf5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+			.ebz-historia strong{color:#c7ccff;font-weight:600;}
+			.ebz-historia-stats{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:40px;}
+			.ebz-historia-stat{text-align:center;background:linear-gradient(180deg,#14141a,#0d0d10);border:1px solid rgba(91,108,245,0.28);border-radius:16px;padding:20px 30px;box-shadow:0 12px 30px rgba(91,108,245,0.08);}
+			.ebz-historia-stat b{display:block;font-size:30px;font-weight:800;background:linear-gradient(90deg,#5B6CF5,#8f6cf5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
+			.ebz-historia-stat span{display:block;margin-top:6px;color:#8a8a94;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;}
+			</style>
+			<div class="ebz-historia">
+				<span class="ebz-historia-quote-mark">&rdquo;</span>
+				<span class="ebz-eyebrow">Nossa história</span>
+				<h2>A trajetória por trás da <span class="ebz-blue-degrade">Ebenézer</span></h2>
+				<p class="ebz-historia-lead">"Até aqui nos ajudou o Senhor." O nome Ebenézer significa "pedra de ajuda": foi esse o propósito que nos trouxe até aqui.</p>
+				<div class="ebz-historia-rule"></div>
+				<p>Começamos atendendo pequenos empreendedores que precisavam de mais do que um site bonito: precisavam de um site que <strong>trabalhasse por eles</strong>, gerando clientes de verdade. Cada projeto entregue virou prova de que tecnologia bem feita muda o jogo de quem empreende.</p>
+				<p>Unimos <strong>fé, excelência técnica e visão de negócio</strong> pra transformar ideias em sites e aplicativos que não são apenas bonitos: são construídos pra gerar resultado. E seguimos com o mesmo propósito do primeiro projeto: ajudar negócios a crescerem de verdade, um passo de cada vez.</p>
+				<div class="ebz-historia-stats">
+					<div class="ebz-historia-stat"><b>120+</b><span>Projetos entregues</span></div>
+					<div class="ebz-historia-stat"><b>100%</b><span>Atendimento em todo o Brasil</span></div>
+					<div class="ebz-historia-stat"><b>3-6</b><span>Semanas por entrega</span></div>
 				</div>
-				<script>
-				(function(){
-					var slides = document.querySelectorAll('.ebz-project-hero-slide');
-					var dots = document.querySelectorAll('.ebz-dot');
-					var current = 0, timer;
-					function show(i){
-						slides.forEach(function(s,idx){
-							var on = idx===i;
-							s.classList.toggle('active', on);
-							s.style.opacity = on ? '1' : '0';
-							s.style.visibility = on ? 'visible' : 'hidden';
-							s.style.zIndex = on ? '2' : '1';
-							s.style.pointerEvents = on ? 'auto' : 'none';
-						});
-						dots.forEach(function(d,idx){ d.classList.toggle('active', idx===i); });
-						current = i;
-					}
-					function next(){ show((current+1) % slides.length); }
-					function startAuto(){ clearInterval(timer); timer = setInterval(next, 5000); }
-					dots.forEach(function(d){
-						d.addEventListener('click', function(){
-							show(parseInt(d.getAttribute('data-goto'),10));
-							startAuto();
-						});
-					});
-					startAuto();
-				})();
-				</script>
-				</div>
-		<div class="ebz-cases-cta">
-			<a href="cases.html">Ver mais cases de sucesso →</a>
-		</div>
-		<div class="elementor-element elementor-element-1dab76d e-con-full e-flex e-con e-child" data-id="1dab76d" data-element_type="container" data-e-type="container" data-settings="{" background_background":"classic"}"="">
-				<div class="elementor-element elementor-element-708ff99 elementor-align-justify elementor-widget__width-inherit elementor-widget elementor-widget-button" data-id="708ff99" data-element_type="widget" data-e-type="widget" data-widget_type="button.default">
-										<a class="elementor-button elementor-button-link elementor-size-sm" href="https://wa.me/5547991915045?text=Ol%C3%A1!%20Quero%20conhecer%20os%20projetos%20da%20Eben%C3%A9zer%20Tecnologia.">
-						<span class="elementor-button-content-wrapper">
-						<span class="elementor-button-icon">
-				<svg aria-hidden="true" class="e-font-icon-svg e-fab-behance" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path d="M232 237.2c31.8-15.2 48.4-38.2 48.4-74 0-70.6-52.6-87.8-113.3-87.8H0v354.4h171.8c64.4 0 124.9-30.9 124.9-102.9 0-44.5-21.1-77.4-64.7-89.7zM77.9 135.9H151c28.1 0 53.4 7.9 53.4 40.5 0 30.1-19.7 42.2-47.5 42.2h-79v-82.7zm83.3 233.7H77.9V272h84.9c34.3 0 56 14.3 56 50.6 0 35.8-25.9 47-57.6 47zm358.5-240.7H376V94h143.7v34.9zM576 305.2c0-75.9-44.4-139.2-124.9-139.2-78.2 0-131.3 58.8-131.3 135.8 0 79.9 50.3 134.7 131.3 134.7 61.3 0 101-27.6 120.1-86.3H509c-6.7 21.9-34.3 33.5-55.7 33.5-41.3 0-63-24.2-63-65.3h185.1c.3-4.2.6-8.7.6-13.2zM390.4 274c2.3-33.7 24.7-54.8 58.5-54.8 35.4 0 53.2 20.8 56.2 54.8H390.4z"></path></svg>			</span>
-									<span class="elementor-button-text">Falar no WhatsApp</span>
-					</span>
-					</a>
-								</div>
-				</div>
-					</div>
-				</div>
-		<div id="valor" class="ebz-orcamento-section">
-			<div class="ebz-orcamento-card">
-				<span class="ebz-eyebrow">Vamos conversar?</span>
-				<h2>Solicite seu <span class="ebz-blue-degrade">orçamento</span></h2>
-				<p class="ebz-orcamento-sub">Preencha o formulário e fale diretamente com nosso time pelo WhatsApp.</p>
-				<form id="ebz-orcamento-form" class="ebz-form" novalidate>
-					<div class="ebz-form-row">
-						<div class="ebz-form-field">
-							<label for="ebz-f-nome">Nome</label>
-							<input id="ebz-f-nome" name="nome" type="text" required placeholder="Seu nome">
-						</div>
-						<div class="ebz-form-field">
-							<label for="ebz-f-contato">WhatsApp ou e-mail</label>
-							<input id="ebz-f-contato" name="contato" type="text" required placeholder="(00) 00000-0000">
-						</div>
-					</div>
-					<div class="ebz-form-field">
-						<label for="ebz-f-servico">Serviço de interesse</label>
-						<select id="ebz-f-servico" name="servico" required>
-							<option value="" disabled selected>Selecione uma opção</option>
-							<option>Site Institucional</option>
-							<option>Landing Page</option>
-							<option>Loja Virtual</option>
-							<option>Aplicativo Android</option>
-							<option>Aplicativo iOS</option>
-							<option>Sistema Personalizado</option>
-							<option>Outro</option>
-						</select>
-					</div>
-					<div class="ebz-form-field">
-						<label for="ebz-f-mensagem">Mensagem</label>
-						<textarea id="ebz-f-mensagem" name="mensagem" rows="4" placeholder="Conte um pouco sobre o seu projeto"></textarea>
-					</div>
-					<button type="submit" class="ebz-orcamento-btn">Enviar pelo WhatsApp <svg viewBox="0 0 512 512" style="width:15px;height:15px;fill:#fff;"><path d="M476 3.2L12.4 270.4c-18.5 10.6-16.1 38.8 3.3 46.7l112.5 46.7c19.4 8.1 38.1-6.7 38.1-27.2v-59.3l232.2-165c11.3-8 21.7 4.7 12.3 15.1L228.5 372.5l-.2.1c-1.5 1.5-2.7 3.3-3.6 5.3-.9 2-1.4 4.1-1.5 6.2l-6.4 122.4c-.6 11.7 4.3 22.3 13 28.7 5.5 4.1 12.1 6.2 18.6 6.2 4.6 0 9.2-1.1 13.5-3.2 6.9-3.4 12.5-9.7 15.2-16.9L497.4 34.7C505.4 15.3 486.7-6.2 476 3.2z"></path></svg></button>
-				</form>
 			</div>
-			<div class="ebz-orcamento-benefits">
-				<div class="ebz-benefit"><svg viewBox="0 0 512 512"><path d="M505 174.8l-39.6-39.6c-9.4-9.4-24.6-9.4-33.9 0L192 374.7 80.6 263.2c-9.4-9.4-24.6-9.4-33.9 0L7 302.9c-9.4 9.4-9.4 24.6 0 34L175 505c9.4 9.4 24.6 9.4 33.9 0l296-296.2c9.4-9.5 9.4-24.7.1-34z"></path></svg><div><strong>Entrega ágil</strong><span>Landing pages em 1 a 2 semanas, sites institucionais em 2 a 4 semanas.</span></div></div>
-				<div class="ebz-benefit"><svg viewBox="0 0 512 512"><path d="M505 174.8l-39.6-39.6c-9.4-9.4-24.6-9.4-33.9 0L192 374.7 80.6 263.2c-9.4-9.4-24.6-9.4-33.9 0L7 302.9c-9.4 9.4-9.4 24.6 0 34L175 505c9.4 9.4 24.6 9.4 33.9 0l296-296.2c9.4-9.5 9.4-24.7.1-34z"></path></svg><div><strong>Suporte contínuo</strong><span>Manutenção, monitoramento e ajustes sempre que necessário após o lançamento.</span></div></div>
-				<div class="ebz-benefit"><svg viewBox="0 0 512 512"><path d="M505 174.8l-39.6-39.6c-9.4-9.4-24.6-9.4-33.9 0L192 374.7 80.6 263.2c-9.4-9.4-24.6-9.4-33.9 0L7 302.9c-9.4 9.4-9.4 24.6 0 34L175 505c9.4 9.4 24.6 9.4 33.9 0l296-296.2c9.4-9.5 9.4-24.7.1-34z"></path></svg><div><strong>Design exclusivo</strong><span>Um site com identidade única, feito sob medida para o seu negócio.</span></div></div>
-				<div class="ebz-benefit"><svg viewBox="0 0 512 512"><path d="M505 174.8l-39.6-39.6c-9.4-9.4-24.6-9.4-33.9 0L192 374.7 80.6 263.2c-9.4-9.4-24.6-9.4-33.9 0L7 302.9c-9.4 9.4-9.4 24.6 0 34L175 505c9.4 9.4 24.6 9.4 33.9 0l296-296.2c9.4-9.5 9.4-24.7.1-34z"></path></svg><div><strong>Performance e velocidade</strong><span>Site rápido e otimizado, pronto pra converter.</span></div></div>
-				<div class="ebz-benefit"><svg viewBox="0 0 512 512"><path d="M505 174.8l-39.6-39.6c-9.4-9.4-24.6-9.4-33.9 0L192 374.7 80.6 263.2c-9.4-9.4-24.6-9.4-33.9 0L7 302.9c-9.4 9.4-9.4 24.6 0 34L175 505c9.4 9.4 24.6 9.4 33.9 0l296-296.2c9.4-9.5 9.4-24.7.1-34z"></path></svg><div><strong>Responsividade</strong><span>Experiência perfeita em qualquer dispositivo que seus clientes usarem.</span></div></div>
+		</div>
+		<div id="equipe" class="ebz-section">
+			<div class="ebz-section-head">
+				<span class="ebz-eyebrow">Quem faz acontecer</span>
+				<h2>Nossa <span class="ebz-blue-degrade">equipe</span></h2>
+			</div>
+			<div class="ebz-team-grid">
+				<div class="ebz-team-card">
+					<div class="ebz-team-avatar-ring">
+						<img class="ebz-no-hue" loading="lazy" src="images/victor-foto.png" alt="VictorSaaS">
+					</div>
+					<h3>VictorSaaS</h3>
+					<p class="ebz-team-role">Desenvolvedor &amp; Designer</p>
+					<p class="ebz-team-bio">Desenvolvedor e designer focado na criação de sistemas SaaS, dashboards e interfaces modernas para empresas.</p>
+					<ul class="ebz-team-skills">
+						<li>Sistemas SaaS personalizados</li>
+						<li>Dashboards inteligentes</li>
+						<li>Interfaces modernas e intuitivas</li>
+						<li>Soluções digitais para empresas</li>
+					</ul>
+				</div>
+				<div class="ebz-team-card">
+					<div class="ebz-team-avatar-ring">
+						<img class="ebz-no-hue" loading="lazy" src="images/felix-foto.png" alt="Felix Bueno">
+					</div>
+					<h3>Felix Bueno</h3>
+					<p class="ebz-team-role">Criador de Conteúdo Digital &amp; Desenvolvedor</p>
+					<p class="ebz-team-bio">Transformo ideias em sites, aplicativos e soluções digitais profissionais.</p>
+					<ul class="ebz-team-skills">
+						<li>Sites profissionais</li>
+						<li>Aplicativos</li>
+						<li>Landing Pages</li>
+						<li>Projetos digitais personalizados</li>
+					</ul>
+				</div>
+				<div class="ebz-team-card">
+					<div class="ebz-team-avatar-ring">
+						<img class="ebz-no-hue" loading="lazy" src="images/jonatas-foto.png" alt="Jonatas Cardoso">
+					</div>
+					<h3>Jonatas Cardoso</h3>
+					<p class="ebz-team-role">Designer Gráfico</p>
+					<p class="ebz-team-bio">Especialista em transformar ideias em designs criativos e profissionais.</p>
+					<ul class="ebz-team-skills">
+						<li>+14 anos de experiência</li>
+						<li>Professor e criador de conteúdo</li>
+						<li>Cursos, packs e recursos para designers</li>
+					</ul>
+				</div>
+				<div class="ebz-team-card">
+					<div class="ebz-team-avatar-ring">
+						<img class="ebz-no-hue" loading="lazy" src="images/integrante4-foto.png" alt="João Henrique">
+					</div>
+					<h3>João Henrique</h3>
+					<p class="ebz-team-role">Desenvolvedor de Sites &amp; Apps</p>
+					<p class="ebz-team-bio">Especializado em desenvolvimento de sites e aplicativos, com foco em criar soluções modernas, funcionais e profissionais.</p>
+					<ul class="ebz-team-skills">
+						<li>Desenvolvimento de sites</li>
+						<li>Desenvolvimento de aplicativos</li>
+						<li>Interfaces modernas e responsivas</li>
+						<li>Soluções rápidas e funcionais</li>
+						<li>Projetos personalizados</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 		<div id="faq" class="elementor-element elementor-element-5775db6c e-flex e-con-boxed e-con e-parent" data-id="5775db6c" data-element_type="container" data-e-type="container" data-settings="{" background_background":"classic"}"="">
@@ -1590,6 +1607,50 @@ height: 800px;
 				</div>
 					</div>
 				</div>
+		<div id="valor" class="ebz-orcamento-section">
+			<div class="ebz-orcamento-card">
+				<span class="ebz-eyebrow">Vamos conversar?</span>
+				<h2>Solicite seu <span class="ebz-blue-degrade">orçamento</span></h2>
+				<p class="ebz-orcamento-sub">Preencha o formulário e fale diretamente com nosso time pelo WhatsApp.</p>
+				<form id="ebz-orcamento-form" class="ebz-form" novalidate>
+					<div class="ebz-form-row">
+						<div class="ebz-form-field">
+							<label for="ebz-f-nome">Nome</label>
+							<input id="ebz-f-nome" name="nome" type="text" required placeholder="Seu nome">
+						</div>
+						<div class="ebz-form-field">
+							<label for="ebz-f-contato">WhatsApp ou e-mail</label>
+							<input id="ebz-f-contato" name="contato" type="text" required placeholder="(00) 00000-0000">
+						</div>
+					</div>
+					<div class="ebz-form-field">
+						<label for="ebz-f-servico">Serviço de interesse</label>
+						<select id="ebz-f-servico" name="servico" required>
+							<option value="" disabled selected>Selecione uma opção</option>
+							<option>Site Institucional</option>
+							<option>Landing Page</option>
+							<option>Loja Virtual</option>
+							<option>Aplicativo Android</option>
+							<option>Aplicativo iOS</option>
+							<option>Sistema Personalizado</option>
+							<option>Outro</option>
+						</select>
+					</div>
+					<div class="ebz-form-field">
+						<label for="ebz-f-mensagem">Mensagem</label>
+						<textarea id="ebz-f-mensagem" name="mensagem" rows="4" placeholder="Conte um pouco sobre o seu projeto"></textarea>
+					</div>
+					<button type="submit" class="ebz-orcamento-btn">Enviar pelo WhatsApp <svg viewBox="0 0 512 512" style="width:15px;height:15px;fill:#fff;"><path d="M476 3.2L12.4 270.4c-18.5 10.6-16.1 38.8 3.3 46.7l112.5 46.7c19.4 8.1 38.1-6.7 38.1-27.2v-59.3l232.2-165c11.3-8 21.7 4.7 12.3 15.1L228.5 372.5l-.2.1c-1.5 1.5-2.7 3.3-3.6 5.3-.9 2-1.4 4.1-1.5 6.2l-6.4 122.4c-.6 11.7 4.3 22.3 13 28.7 5.5 4.1 12.1 6.2 18.6 6.2 4.6 0 9.2-1.1 13.5-3.2 6.9-3.4 12.5-9.7 15.2-16.9L497.4 34.7C505.4 15.3 486.7-6.2 476 3.2z"></path></svg></button>
+				</form>
+			</div>
+			<div class="ebz-orcamento-benefits">
+				<div class="ebz-benefit"><svg viewBox="0 0 512 512"><path d="M505 174.8l-39.6-39.6c-9.4-9.4-24.6-9.4-33.9 0L192 374.7 80.6 263.2c-9.4-9.4-24.6-9.4-33.9 0L7 302.9c-9.4 9.4-9.4 24.6 0 34L175 505c9.4 9.4 24.6 9.4 33.9 0l296-296.2c9.4-9.5 9.4-24.7.1-34z"></path></svg><div><strong>Entrega ágil</strong><span>Landing pages em 1 a 2 semanas, sites institucionais em 2 a 4 semanas.</span></div></div>
+				<div class="ebz-benefit"><svg viewBox="0 0 512 512"><path d="M505 174.8l-39.6-39.6c-9.4-9.4-24.6-9.4-33.9 0L192 374.7 80.6 263.2c-9.4-9.4-24.6-9.4-33.9 0L7 302.9c-9.4 9.4-9.4 24.6 0 34L175 505c9.4 9.4 24.6 9.4 33.9 0l296-296.2c9.4-9.5 9.4-24.7.1-34z"></path></svg><div><strong>Suporte contínuo</strong><span>Manutenção, monitoramento e ajustes sempre que necessário após o lançamento.</span></div></div>
+				<div class="ebz-benefit"><svg viewBox="0 0 512 512"><path d="M505 174.8l-39.6-39.6c-9.4-9.4-24.6-9.4-33.9 0L192 374.7 80.6 263.2c-9.4-9.4-24.6-9.4-33.9 0L7 302.9c-9.4 9.4-9.4 24.6 0 34L175 505c9.4 9.4 24.6 9.4 33.9 0l296-296.2c9.4-9.5 9.4-24.7.1-34z"></path></svg><div><strong>Design exclusivo</strong><span>Um site com identidade única, feito sob medida para o seu negócio.</span></div></div>
+				<div class="ebz-benefit"><svg viewBox="0 0 512 512"><path d="M505 174.8l-39.6-39.6c-9.4-9.4-24.6-9.4-33.9 0L192 374.7 80.6 263.2c-9.4-9.4-24.6-9.4-33.9 0L7 302.9c-9.4 9.4-9.4 24.6 0 34L175 505c9.4 9.4 24.6 9.4 33.9 0l296-296.2c9.4-9.5 9.4-24.7.1-34z"></path></svg><div><strong>Performance e velocidade</strong><span>Site rápido e otimizado, pronto pra converter.</span></div></div>
+				<div class="ebz-benefit"><svg viewBox="0 0 512 512"><path d="M505 174.8l-39.6-39.6c-9.4-9.4-24.6-9.4-33.9 0L192 374.7 80.6 263.2c-9.4-9.4-24.6-9.4-33.9 0L7 302.9c-9.4 9.4-9.4 24.6 0 34L175 505c9.4 9.4 24.6 9.4 33.9 0l296-296.2c9.4-9.5 9.4-24.7.1-34z"></path></svg><div><strong>Responsividade</strong><span>Experiência perfeita em qualquer dispositivo que seus clientes usarem.</span></div></div>
+			</div>
+		</div>
 		<div class="elementor-element elementor-element-a787a0d e-con-full e-flex e-con e-parent" data-id="a787a0d" data-element_type="container" data-e-type="container" data-settings="{" background_background":"classic"}"="">
 				<div class="elementor-element elementor-element-51b080a elementor-widget-mobile__width-inherit elementor-widget elementor-widget-image" data-id="51b080a" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
 															<img loading="lazy" decoding="async" width="2351" height="425" src="images/1-2312312312-1.png" class="attachment-full size-full wp-image-818" alt="" srcset="images/1-2312312312-1.png 2351w, images/1-2312312312-1-300x54.png 300w, images/1-2312312312-1-1024x185.png 1024w, images/1-2312312312-1-768x139.png 768w, images/1-2312312312-1-1536x278.png 1536w, images/1-2312312312-1-2048x370.png 2048w" sizes="(max-width: 2351px) 100vw, 2351px">															</div>
