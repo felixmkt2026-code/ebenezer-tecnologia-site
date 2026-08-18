@@ -275,6 +275,15 @@ button.ebz-dot.active{background:#5B6CF5 !important;}
 .ebz-form-field select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a3a3af' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>");background-repeat:no-repeat;background-position:right 14px center;background-size:16px;padding-right:38px;}
 .ebz-form-field select option{background:#16161c;color:#fff;}
 .ebz-form-field textarea{resize:vertical;min-height:96px;}
+.ebz-recipient-picker{display:flex;flex-wrap:wrap;gap:8px;}
+.ebz-recipient-chip{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:999px;padding:6px 14px 6px 6px;cursor:pointer;font-family:inherit;transition:border-color .2s,background .2s;}
+.ebz-recipient-chip img{width:26px;height:26px;border-radius:50%;object-fit:cover;}
+.ebz-recipient-chip span{color:#c9c9d6;font-size:12px;font-weight:600;}
+.ebz-recipient-chip:hover{border-color:rgba(91,108,245,0.4);}
+.ebz-recipient-chip.ebz-selected{background:rgba(91,108,245,0.18);border-color:#5B6CF5;}
+.ebz-recipient-chip.ebz-selected span{color:#fff;}
+.ebz-recipient-warning{display:none;color:#ff8a8a;font-size:12px;margin:8px 0 0;}
+.ebz-recipient-warning.ebz-show{display:block;}
 .ebz-map-wrap{position:relative;max-width:1100px;margin:0 auto 30px;padding:0 24px;}
 .ebz-map-frame{display:block;width:100%;border-radius:16px;border:1px solid rgba(255,255,255,0.1);}
 .ebz-map-link{position:absolute;top:14px;left:38px;z-index:2;background:rgba(13,13,16,0.85);color:#fff;font-size:12px;font-weight:600;padding:8px 14px;border-radius:8px;text-decoration:none;border:1px solid rgba(255,255,255,0.15);}
@@ -1657,6 +1666,28 @@ height: 800px;
 						<label for="ebz-f-mensagem">Mensagem</label>
 						<textarea id="ebz-f-mensagem" name="mensagem" rows="4" placeholder="Conte um pouco sobre o seu projeto"></textarea>
 					</div>
+					<div class="ebz-form-field">
+						<label>Selecione com quem você quer falar</label>
+						<div class="ebz-recipient-picker" id="ebz-recipient-picker">
+							<button type="button" class="ebz-recipient-chip" data-numero="5512988731064" data-nome="VictorSaaS">
+								<img class="ebz-no-hue" src="images/victor-foto.png" alt="">
+								<span>VictorSaaS</span>
+							</button>
+							<button type="button" class="ebz-recipient-chip" data-numero="5547991915045" data-nome="Felix Bueno">
+								<img class="ebz-no-hue" src="images/felix-foto.png" alt="">
+								<span>Felix Bueno</span>
+							</button>
+							<button type="button" class="ebz-recipient-chip" data-numero="5511951077143" data-nome="Jonatas Cardoso">
+								<img class="ebz-no-hue" src="images/jonatas-foto.png" alt="">
+								<span>Jonatas Cardoso</span>
+							</button>
+							<button type="button" class="ebz-recipient-chip" data-numero="554784653051" data-nome="João Henrique">
+								<img class="ebz-no-hue" src="images/integrante4-foto.png" alt="">
+								<span>João Henrique</span>
+							</button>
+						</div>
+						<p class="ebz-recipient-warning" id="ebz-recipient-warning">Selecione um integrante da equipe acima antes de enviar.</p>
+					</div>
 					<button type="submit" class="ebz-orcamento-btn">Enviar pelo WhatsApp <svg viewBox="0 0 512 512" style="width:15px;height:15px;fill:#fff;"><path d="M476 3.2L12.4 270.4c-18.5 10.6-16.1 38.8 3.3 46.7l112.5 46.7c19.4 8.1 38.1-6.7 38.1-27.2v-59.3l232.2-165c11.3-8 21.7 4.7 12.3 15.1L228.5 372.5l-.2.1c-1.5 1.5-2.7 3.3-3.6 5.3-.9 2-1.4 4.1-1.5 6.2l-6.4 122.4c-.6 11.7 4.3 22.3 13 28.7 5.5 4.1 12.1 6.2 18.6 6.2 4.6 0 9.2-1.1 13.5-3.2 6.9-3.4 12.5-9.7 15.2-16.9L497.4 34.7C505.4 15.3 486.7-6.2 476 3.2z"></path></svg></button>
 				</form>
 				<div class="ebz-orcamento-divider"><span>ou</span></div>
@@ -1921,7 +1952,23 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
 (function(){
 	var form = document.getElementById('ebz-orcamento-form');
 	if(!form) return;
-	var WHATSAPP_NUMERO = '5547991915045';
+	var picker = document.getElementById('ebz-recipient-picker');
+	var warning = document.getElementById('ebz-recipient-warning');
+	var selectedNumero = null;
+	var selectedNome = null;
+
+	if(picker){
+		picker.querySelectorAll('.ebz-recipient-chip').forEach(function(chip){
+			chip.addEventListener('click', function(){
+				picker.querySelectorAll('.ebz-recipient-chip').forEach(function(c){ c.classList.remove('ebz-selected'); });
+				chip.classList.add('ebz-selected');
+				selectedNumero = chip.getAttribute('data-numero');
+				selectedNome = chip.getAttribute('data-nome');
+				warning.classList.remove('ebz-show');
+			});
+		});
+	}
+
 	form.addEventListener('submit', function(e){
 		e.preventDefault();
 		var nome = form.nome.value.trim();
@@ -1932,13 +1979,21 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
 			form.reportValidity();
 			return;
 		}
-		var texto = 'Olá! Gostaria de solicitar um orçamento.\n\n' +
+		if(!selectedNumero){
+			warning.classList.add('ebz-show');
+			warning.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			return;
+		}
+		var texto = 'Olá ' + selectedNome + '! Gostaria de solicitar um orçamento.\n\n' +
 			'*Nome:* ' + nome + '\n' +
 			'*Contato:* ' + contato + '\n' +
 			'*Serviço de interesse:* ' + servico +
 			(mensagem ? '\n*Mensagem:* ' + mensagem : '');
-		window.open('https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent(texto), '_blank');
+		window.open('https://wa.me/' + selectedNumero + '?text=' + encodeURIComponent(texto), '_blank');
 		form.reset();
+		if(picker) picker.querySelectorAll('.ebz-recipient-chip').forEach(function(c){ c.classList.remove('ebz-selected'); });
+		selectedNumero = null;
+		selectedNome = null;
 	});
 })();
 </script>
