@@ -204,10 +204,13 @@ button.ebz-dot.active{background:#5B6CF5 !important;}
 .ebz-diff-item:hover{border-color:rgba(91,108,245,0.5);transform:translateY(-5px);box-shadow:0 18px 36px rgba(91,108,245,0.14);}
 .ebz-diff-item:hover::before{transform:scaleX(1);}
 .ebz-diff-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#5B6CF5,#8f6cf5);box-shadow:0 8px 20px rgba(91,108,245,0.35);margin-bottom:6px;}
-.ebz-tools-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
-.ebz-tool-badge{display:inline-flex;align-items:center;gap:10px;background:#0d0d10;border:1px solid rgba(255,255,255,0.08);border-radius:999px;padding:10px 20px;color:#e5e5ea;font-size:13px;font-weight:600;transition:border-color .2s,transform .2s;}
+.ebz-tools-marquee{position:relative;overflow:hidden;width:100%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+.ebz-tools-track{display:flex;flex-wrap:nowrap;gap:14px;width:max-content;animation:ebz-tools-scroll 22s linear infinite;}
+.ebz-tools-marquee:hover .ebz-tools-track{animation-play-state:paused;}
+@keyframes ebz-tools-scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.ebz-tool-badge{display:inline-flex;align-items:center;gap:10px;background:#0d0d10;border:1px solid rgba(255,255,255,0.08);border-radius:999px;padding:10px 20px;color:#e5e5ea;font-size:13px;font-weight:600;transition:border-color .2s,transform .2s;flex-shrink:0;white-space:nowrap;}
 .ebz-tool-badge:hover{border-color:rgba(91,108,245,0.4);transform:translateY(-3px);}
-.ebz-tool-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.ebz-tool-badge svg{width:18px;height:18px;flex-shrink:0;}
 .ebz-diff-icon svg{width:20px;height:20px;}
 .ebz-diff-item strong{color:#fff;font-size:15px;}
 .ebz-diff-item span{color:#a3a3af;font-size:13px;line-height:1.5;}
@@ -1167,13 +1170,23 @@ height: 800px;
 				<span class="ebz-eyebrow">Nosso fluxo de trabalho</span>
 				<h2>Ferramentas que <span class="ebz-blue-degrade">usamos</span></h2>
 			</div>
-			<div class="ebz-tools-row">
-				<div class="ebz-tool-badge"><span class="ebz-tool-dot" style="background:#DA7756;"></span>Claude</div>
-				<div class="ebz-tool-badge"><span class="ebz-tool-dot" style="background:#4285F4;"></span>Gemini</div>
-				<div class="ebz-tool-badge"><span class="ebz-tool-dot" style="background:#00C4CC;"></span>Canva</div>
-				<div class="ebz-tool-badge"><span class="ebz-tool-dot" style="background:#A259FF;"></span>Figma</div>
-				<div class="ebz-tool-badge"><span class="ebz-tool-dot" style="background:#007ACC;"></span>VS Code</div>
-				<div class="ebz-tool-badge"><span class="ebz-tool-dot" style="background:#ffffff;"></span>GitHub</div>
+			<div class="ebz-tools-marquee">
+				<div class="ebz-tools-track" id="ebz-tools-track">
+					<!-- set A -->
+					<div class="ebz-tool-badge"><svg viewBox="0 0 24 24"><path fill="#DA7756" d="M12 2l1.8 5.2L19 5l-2.4 5.4L22 12l-5.4 1.6L19 19l-5.2-1.8L12 22l-1.8-5.8L5 19l2.4-5.4L2 12l5.4-1.6L5 5l5.2 1.8z"/></svg>Claude</div>
+					<div class="ebz-tool-badge"><svg viewBox="0 0 24 24"><defs><linearGradient id="gg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4285F4"/><stop offset="1" stop-color="#9B72CB"/></linearGradient></defs><path fill="url(#gg1)" d="M12 2c0 5.523 4.477 10 10 10-5.523 0-10 4.477-10 10 0-5.523-4.477-10-10-10 5.523 0 10-4.477 10-10z"/></svg>Gemini</div>
+					<div class="ebz-tool-badge"><svg viewBox="0 0 24 24"><defs><linearGradient id="cg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8B3DFF"/><stop offset="1" stop-color="#00C4CC"/></linearGradient></defs><circle cx="12" cy="12" r="10" fill="url(#cg1)"/><path fill="#fff" d="M16.2 9.3c-.3 2-2.1 3.5-4.3 3.5-2.4 0-4.4-2-4.4-4.4S9.5 4 11.9 4c1.3 0 2.4.5 3.2 1.4l-1.3 1.1c-.5-.5-1.2-.8-2-.8-1.6 0-2.9 1.3-2.9 2.9s1.3 2.9 2.9 2.9c1.3 0 2.3-.8 2.6-1.9z"/></svg>Canva</div>
+					<div class="ebz-tool-badge"><svg viewBox="0 0 24 24"><circle cx="15" cy="17.5" r="2.5" fill="#0ACF83"/><path fill="#A259FF" d="M9 22.5a2.5 2.5 0 010-5H12v2.5A2.5 2.5 0 019 22.5z"/><path fill="#F24E1E" d="M6.5 15A2.5 2.5 0 019 12.5H12V17.5H9A2.5 2.5 0 016.5 15z"/><path fill="#FF7262" d="M6.5 10A2.5 2.5 0 019 7.5H12V12.5H9A2.5 2.5 0 016.5 10z"/><path fill="#1ABCFE" d="M9 2.5H12V7.5H9A2.5 2.5 0 019 2.5z"/></svg>Figma</div>
+					<div class="ebz-tool-badge"><svg viewBox="0 0 24 24"><path fill="#007ACC" d="M20.9 4.6L16.5 2.5a1 1 0 00-1.1.2L6.9 10 3.6 7.5a.7.7 0 00-.9 0l-1.1.9a.7.7 0 000 1.1L4.8 12l-3.2 2.5a.7.7 0 000 1.1l1.1.9a.7.7 0 00.9 0l3.3-2.5 8.5 7.3a1 1 0 001.1.2l4.4-2.1a1 1 0 00.6-.9V5.5a1 1 0 00-.6-.9zM16 16.9L10.3 12 16 7.1v9.8z"/></svg>VS Code</div>
+					<div class="ebz-tool-badge"><svg viewBox="0 0 24 24"><path fill="#ffffff" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.269 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.378.203 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub</div>
+					<!-- set B (duplicate for seamless loop) -->
+					<div class="ebz-tool-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="#DA7756" d="M12 2l1.8 5.2L19 5l-2.4 5.4L22 12l-5.4 1.6L19 19l-5.2-1.8L12 22l-1.8-5.8L5 19l2.4-5.4L2 12l5.4-1.6L5 5l5.2 1.8z"/></svg>Claude</div>
+					<div class="ebz-tool-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="url(#gg1)" d="M12 2c0 5.523 4.477 10 10 10-5.523 0-10 4.477-10 10 0-5.523-4.477-10-10-10 5.523 0 10-4.477 10-10z"/></svg>Gemini</div>
+					<div class="ebz-tool-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="url(#cg1)"/><path fill="#fff" d="M16.2 9.3c-.3 2-2.1 3.5-4.3 3.5-2.4 0-4.4-2-4.4-4.4S9.5 4 11.9 4c1.3 0 2.4.5 3.2 1.4l-1.3 1.1c-.5-.5-1.2-.8-2-.8-1.6 0-2.9 1.3-2.9 2.9s1.3 2.9 2.9 2.9c1.3 0 2.3-.8 2.6-1.9z"/></svg>Canva</div>
+					<div class="ebz-tool-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="15" cy="17.5" r="2.5" fill="#0ACF83"/><path fill="#A259FF" d="M9 22.5a2.5 2.5 0 010-5H12v2.5A2.5 2.5 0 019 22.5z"/><path fill="#F24E1E" d="M6.5 15A2.5 2.5 0 019 12.5H12V17.5H9A2.5 2.5 0 016.5 15z"/><path fill="#FF7262" d="M6.5 10A2.5 2.5 0 019 7.5H12V12.5H9A2.5 2.5 0 016.5 10z"/><path fill="#1ABCFE" d="M9 2.5H12V7.5H9A2.5 2.5 0 019 2.5z"/></svg>Figma</div>
+					<div class="ebz-tool-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="#007ACC" d="M20.9 4.6L16.5 2.5a1 1 0 00-1.1.2L6.9 10 3.6 7.5a.7.7 0 00-.9 0l-1.1.9a.7.7 0 000 1.1L4.8 12l-3.2 2.5a.7.7 0 000 1.1l1.1.9a.7.7 0 00.9 0l3.3-2.5 8.5 7.3a1 1 0 001.1.2l4.4-2.1a1 1 0 00.6-.9V5.5a1 1 0 00-.6-.9zM16 16.9L10.3 12 16 7.1v9.8z"/></svg>VS Code</div>
+					<div class="ebz-tool-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="#ffffff" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.269 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.378.203 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub</div>
+				</div>
 			</div>
 		</div>
 		<div id="processo" class="ebz-section">
