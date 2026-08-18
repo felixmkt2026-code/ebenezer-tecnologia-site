@@ -204,6 +204,10 @@ button.ebz-dot.active{background:#5B6CF5 !important;}
 .ebz-diff-item:hover{border-color:rgba(91,108,245,0.5);transform:translateY(-5px);box-shadow:0 18px 36px rgba(91,108,245,0.14);}
 .ebz-diff-item:hover::before{transform:scaleX(1);}
 .ebz-diff-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#5B6CF5,#8f6cf5);box-shadow:0 8px 20px rgba(91,108,245,0.35);margin-bottom:6px;}
+.ebz-tools-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
+.ebz-tool-badge{display:inline-flex;align-items:center;gap:10px;background:#0d0d10;border:1px solid rgba(255,255,255,0.08);border-radius:999px;padding:10px 20px;color:#e5e5ea;font-size:13px;font-weight:600;transition:border-color .2s,transform .2s;}
+.ebz-tool-badge:hover{border-color:rgba(91,108,245,0.4);transform:translateY(-3px);}
+.ebz-tool-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
 .ebz-diff-icon svg{width:20px;height:20px;}
 .ebz-diff-item strong{color:#fff;font-size:15px;}
 .ebz-diff-item span{color:#a3a3af;font-size:13px;line-height:1.5;}
@@ -642,14 +646,7 @@ button.ebz-dot.active{background:#5B6CF5 !important;}
 		<div class="elementor-element elementor-element-96fc761 e-con-full e-flex e-con e-child" data-id="96fc761" data-element_type="container" data-e-type="container">
 				<div class="elementor-element elementor-element-16a7fcd elementor-widget__width-initial elementor-widget-tablet__width-initial elementor-widget-mobile__width-inherit elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-text-editor" data-id="16a7fcd" data-element_type="widget" data-e-type="widget" data-settings="{" _animation":"fadeinup"}"="" data-widget_type="text-editor.default">
 									<p>Comece agora</p>								</div>
-				<div class="elementor-element elementor-element-8e5d188 elementor-widget elementor-widget-button" data-id="8e5d188" data-element_type="widget" data-e-type="widget" data-widget_type="button.default">
-<a class="elementor-button elementor-button-link elementor-size-sm" href="#valor">
-<span class="elementor-button-content-wrapper">
-<span class="elementor-button-text">Solicitar Orçamento</span>
-</span>
-</a>
-</div>
-<a class="ebz-btn-outline" href="#servicos">Ver serviços</a>
+				<a class="ebz-btn-outline" href="#servicos">Ver serviços</a>
 </div>
 </div>
 				<div class="elementor-element elementor-element-c77c7c6 elementor-widget elementor-widget-html" data-id="c77c7c6" data-element_type="widget" data-e-type="widget" data-widget_type="html.default">
@@ -1002,17 +999,6 @@ height: 800px;
 		<div class="ebz-cases-cta">
 			<a href="cases.html">Ver mais cases de sucesso →</a>
 		</div>
-		<div class="elementor-element elementor-element-1dab76d e-con-full e-flex e-con e-child" data-id="1dab76d" data-element_type="container" data-e-type="container" data-settings="{" background_background":"classic"}"="">
-				<div class="elementor-element elementor-element-708ff99 elementor-align-justify elementor-widget__width-inherit elementor-widget elementor-widget-button" data-id="708ff99" data-element_type="widget" data-e-type="widget" data-widget_type="button.default">
-										<a class="elementor-button elementor-button-link elementor-size-sm" href="https://wa.me/5547991915045?text=Ol%C3%A1!%20Quero%20conhecer%20os%20projetos%20da%20Eben%C3%A9zer%20Tecnologia.">
-						<span class="elementor-button-content-wrapper">
-						<span class="elementor-button-icon">
-				<svg aria-hidden="true" class="e-font-icon-svg e-fab-behance" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path d="M232 237.2c31.8-15.2 48.4-38.2 48.4-74 0-70.6-52.6-87.8-113.3-87.8H0v354.4h171.8c64.4 0 124.9-30.9 124.9-102.9 0-44.5-21.1-77.4-64.7-89.7zM77.9 135.9H151c28.1 0 53.4 7.9 53.4 40.5 0 30.1-19.7 42.2-47.5 42.2h-79v-82.7zm83.3 233.7H77.9V272h84.9c34.3 0 56 14.3 56 50.6 0 35.8-25.9 47-57.6 47zm358.5-240.7H376V94h143.7v34.9zM576 305.2c0-75.9-44.4-139.2-124.9-139.2-78.2 0-131.3 58.8-131.3 135.8 0 79.9 50.3 134.7 131.3 134.7 61.3 0 101-27.6 120.1-86.3H509c-6.7 21.9-34.3 33.5-55.7 33.5-41.3 0-63-24.2-63-65.3h185.1c.3-4.2.6-8.7.6-13.2zM390.4 274c2.3-33.7 24.7-54.8 58.5-54.8 35.4 0 53.2 20.8 56.2 54.8H390.4z"></path></svg>			</span>
-									<span class="elementor-button-text">Falar no WhatsApp</span>
-					</span>
-					</a>
-								</div>
-				</div>
 					</div>
 				</div>
 <div id="modelos" class="ebz-section">
@@ -1176,6 +1162,20 @@ height: 800px;
 				</div>
 			</div>
 		</div>
+		<div class="ebz-section">
+			<div class="ebz-section-head">
+				<span class="ebz-eyebrow">Nosso fluxo de trabalho</span>
+				<h2>Ferramentas que <span class="ebz-blue-degrade">usamos</span></h2>
+			</div>
+			<div class="ebz-tools-row">
+				<div class="ebz-tool-badge"><span class="ebz-tool-dot" style="background:#DA7756;"></span>Claude</div>
+				<div class="ebz-tool-badge"><span class="ebz-tool-dot" style="background:#4285F4;"></span>Gemini</div>
+				<div class="ebz-tool-badge"><span class="ebz-tool-dot" style="background:#00C4CC;"></span>Canva</div>
+				<div class="ebz-tool-badge"><span class="ebz-tool-dot" style="background:#A259FF;"></span>Figma</div>
+				<div class="ebz-tool-badge"><span class="ebz-tool-dot" style="background:#007ACC;"></span>VS Code</div>
+				<div class="ebz-tool-badge"><span class="ebz-tool-dot" style="background:#ffffff;"></span>GitHub</div>
+			</div>
+		</div>
 		<div id="processo" class="ebz-section">
 			<div class="ebz-section-head">
 				<span class="ebz-eyebrow">Nosso processo</span>
@@ -1244,13 +1244,6 @@ height: 800px;
 									<div class="elementor-element elementor-element-b3277a6 elementor-widget__width-inherit elementor-widget elementor-widget-text-editor" data-id="b3277a6" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default"><p data-start="491" data-end="598">Enquanto você cuida do resto do negócio, a página segue transformando visitante em cliente.</p></div>								</div>
 				</div>
 				</div>
-				<div class="elementor-element elementor-element-736f30e elementor-widget elementor-widget-button" data-id="736f30e" data-element_type="widget" data-e-type="widget" data-settings="{" _animation":"fadeinup"}"="" data-widget_type="button.default">
-										<a class="elementor-button elementor-button-link elementor-size-sm" href="#valor">
-						<span class="elementor-button-content-wrapper">
-									<span class="elementor-button-text">Solicitar Orçamento</span>
-					</span>
-					</a>
-								</div>
 					</div>
 				</div>
 		<div id="sobre" class="ebz-section">
