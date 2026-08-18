@@ -170,6 +170,7 @@ img[src^="images/"]:not([src*="logo-ebenezer"]):not(.ebz-no-hue){filter:hue-rota
 .ebz-project-hero-info p{margin:0 0 16px !important;font-size:14px !important;line-height:1.5 !important;color:#c9c9d6 !important;max-width:480px;}
 .ebz-project-hero-btn{display:inline-flex !important;align-items:center;gap:8px;background:linear-gradient(90deg,#5B6CF5,#3A46D6) !important;color:#fff !important;text-decoration:none !important;font-weight:600;font-size:14px;padding:11px 22px !important;border-radius:10px !important;width:auto !important;height:auto !important;}
 .ebz-project-hero-dots{position:absolute !important;top:16px;right:16px;display:flex !important;gap:8px;z-index:5 !important;width:auto !important;height:auto !important;}
+.ebz-project-hero-info h3,.ebz-project-hero-info p,.ebz-project-hero-btn,.ebz-project-tag{opacity:1 !important;transform:none !important;}
 button.ebz-dot{all:unset !important;box-sizing:border-box !important;width:9px !important;height:9px !important;min-width:9px !important;min-height:9px !important;max-width:9px !important;max-height:9px !important;border-radius:50% !important;background:rgba(255,255,255,0.35) !important;cursor:pointer !important;display:inline-block !important;}
 button.ebz-dot.active{background:#5B6CF5 !important;}
 .ebz-reveal{opacity:0 !important;transform:translateY(26px) !important;transition:opacity .8s ease, transform .8s ease !important;}
@@ -1854,7 +1855,10 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
 
 <script>
 (function(){
-	var els = document.querySelectorAll('h1, h2, h3, p, .elementor-icon-list-text, .ekit-accordion-title, .elementskit-card-body p, .ebz-diff-item span, .ebz-benefit span, .elementor-counter-title');
+	var els = Array.prototype.filter.call(
+		document.querySelectorAll('h1, h2, h3, p, .elementor-icon-list-text, .ekit-accordion-title, .elementskit-card-body p, .ebz-diff-item span, .ebz-benefit span, .elementor-counter-title'),
+		function(el){ return !el.closest('.ebz-project-hero'); }
+	);
 	els.forEach(function(el){ el.classList.add('ebz-reveal'); });
 
 	var revealed = new WeakSet();
