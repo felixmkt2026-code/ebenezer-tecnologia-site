@@ -217,9 +217,9 @@ button.ebz-dot.active{background:#5B6CF5 !important;}
 .ebz-team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;}
 .ebz-team-card{position:relative;background:linear-gradient(180deg,#131318,#0a0a0d);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:34px 28px;text-align:center;transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .4s,box-shadow .4s;overflow:hidden;}
 .ebz-team-card::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(91,108,245,0.18),transparent 60%);opacity:0;transition:opacity .4s;pointer-events:none;}
-.ebz-team-card:hover{transform:translateY(-10px) scale(1.05);border-color:rgba(91,108,245,0.5);box-shadow:0 20px 50px -12px rgba(91,108,245,0.35);z-index:2;}
-.ebz-team-card:hover .ebz-team-avatar-ring{transform:scale(1.08);}
-.ebz-team-card:hover::before{opacity:1;}
+.ebz-team-card:hover,.ebz-team-card.ebz-active{transform:translateY(-10px) scale(1.05);border-color:rgba(91,108,245,0.5);box-shadow:0 20px 50px -12px rgba(91,108,245,0.35);z-index:2;}
+.ebz-team-card:hover .ebz-team-avatar-ring,.ebz-team-card.ebz-active .ebz-team-avatar-ring{transform:scale(1.08);}
+.ebz-team-card:hover::before,.ebz-team-card.ebz-active::before{opacity:1;}
 .ebz-team-card--empty{border-style:dashed;opacity:0.6;}
 .ebz-team-card--empty:hover{transform:translateY(-4px);border-color:rgba(255,255,255,0.2);box-shadow:none;}
 .ebz-team-avatar-ring{position:relative;width:130px;height:130px;margin:0 auto 18px;border-radius:50% !important;padding:3px;background:conic-gradient(from 0deg,#5B6CF5,#8f6cf5,#5B6CF5);transition:transform .4s cubic-bezier(.2,.8,.2,1);overflow:hidden;}
@@ -282,13 +282,21 @@ button.ebz-dot.active{background:#5B6CF5 !important;}
 .ebz-form-field select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a3a3af' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>");background-repeat:no-repeat;background-position:right 14px center;background-size:16px;padding-right:38px;}
 .ebz-form-field select option{background:#16161c;color:#fff;}
 .ebz-form-field textarea{resize:vertical;min-height:96px;}
-.ebz-recipient-picker{display:flex;flex-wrap:wrap;gap:8px;}
-.ebz-recipient-chip{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:999px;padding:6px 14px 6px 6px;cursor:pointer;font-family:inherit;transition:border-color .2s,background .2s;}
-.ebz-recipient-chip img{width:26px;height:26px;border-radius:50%;object-fit:cover;}
-.ebz-recipient-chip span{color:#c9c9d6;font-size:12px;font-weight:600;}
-.ebz-recipient-chip:hover{border-color:rgba(91,108,245,0.4);}
-.ebz-recipient-chip.ebz-selected{background:rgba(91,108,245,0.18);border-color:#5B6CF5;}
-.ebz-recipient-chip.ebz-selected span{color:#fff;}
+.ebz-recipient-dropdown{position:relative;}
+.ebz-recipient-toggle{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:12px 16px;cursor:pointer;font-family:inherit;color:#c9c9d6;font-size:13px;font-weight:600;transition:border-color .2s,background .2s;}
+.ebz-recipient-toggle:hover{border-color:rgba(91,108,245,0.4);}
+.ebz-recipient-toggle.ebz-selected{color:#fff;background:rgba(91,108,245,0.18);border-color:#5B6CF5;}
+.ebz-recipient-toggle-inner{display:flex;align-items:center;gap:10px;}
+.ebz-recipient-toggle-inner img{width:24px;height:24px;border-radius:50%;object-fit:cover;}
+.ebz-recipient-arrow{flex-shrink:0;transition:transform .25s;}
+.ebz-recipient-toggle.ebz-open .ebz-recipient-arrow{transform:rotate(180deg);}
+.ebz-recipient-menu{display:none;position:absolute;left:0;right:0;top:calc(100% + 8px);background:#16161c;border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:8px;box-shadow:0 20px 50px -12px rgba(0,0,0,0.6);z-index:20;}
+.ebz-recipient-menu.ebz-open{display:block;}
+.ebz-recipient-option{display:flex;align-items:center;gap:12px;width:100%;background:none;border:none;padding:10px;border-radius:10px;cursor:pointer;font-family:inherit;text-align:left;transition:background .15s;}
+.ebz-recipient-option:hover{background:rgba(91,108,245,0.12);}
+.ebz-recipient-option img{width:34px;height:34px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.ebz-recipient-option span{color:#fff;font-size:13px;font-weight:600;}
+.ebz-recipient-option.ebz-selected{background:rgba(91,108,245,0.18);}
 .ebz-recipient-warning{display:none;color:#ff8a8a;font-size:12px;margin:8px 0 0;}
 .ebz-recipient-warning.ebz-show{display:block;}
 .ebz-map-wrap{position:relative;max-width:1100px;margin:0 auto 30px;padding:0 24px;}
@@ -1011,7 +1019,8 @@ height: 800px;
 				.ebz-esteira:hover .ebz-esteira-track{animation-play-state:paused;}
 				@property --ebz-angle{syntax:'<angle>';inherits:false;initial-value:0deg;}
 .ebz-esteira-card{position:relative;flex:0 0 340px;aspect-ratio:16/10;border-radius:24px;overflow:hidden;background:#0d0d10;box-shadow:0 20px 45px rgba(0,0,0,.4);}
-.ebz-esteira-card::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:3px;background:conic-gradient(from var(--ebz-angle,0deg),transparent 0deg,#8f6cf5 55deg,#5B6CF5 120deg,transparent 190deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;animation:ebz-border-spin 3.5s linear infinite;pointer-events:none;z-index:3;}
+.ebz-esteira-card::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:3px;background:conic-gradient(from var(--ebz-angle,0deg),transparent 0deg,#8f6cf5 55deg,#5B6CF5 120deg,transparent 190deg,transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;animation:ebz-border-spin 3.5s linear infinite;animation-play-state:paused;pointer-events:none;z-index:3;}
+.ebz-esteira-card.ebz-spin::before{animation-play-state:running;}
 @keyframes ebz-border-spin{to{--ebz-angle:360deg;}}
 				.ebz-esteira-card img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
 				.ebz-esteira-info{position:absolute;left:0;right:0;bottom:0;padding:18px 20px 20px;background:linear-gradient(to top, rgba(0,0,0,0.92), rgba(0,0,0,0.5) 60%, transparent);}
@@ -1028,7 +1037,7 @@ height: 800px;
 				<div class="ebz-esteira">
 					<div class="ebz-esteira-track">
 				<div class="ebz-esteira-card">
-					<img class="ebz-no-hue" src="images/mock-agentelabs.png" alt="AgenteLabs" loading="lazy">
+					<img class="ebz-no-hue" src="images/mock-agentelabs.png" alt="AgenteLabs" loading="eager" fetchpriority="high">
 					<div class="ebz-esteira-info">
 						<span class="ebz-project-tag">Site</span>
 						<h4>AgenteLabs</h4>
@@ -1036,7 +1045,7 @@ height: 800px;
 					</div>
 				</div>
 				<div class="ebz-esteira-card">
-					<img class="ebz-no-hue" src="images/mock-megatelecom.png" alt="MegaTelecom" loading="lazy">
+					<img class="ebz-no-hue" src="images/mock-megatelecom.png" alt="MegaTelecom" loading="eager">
 					<div class="ebz-esteira-info">
 						<span class="ebz-project-tag">Site</span>
 						<h4>MegaTelecom</h4>
@@ -1390,23 +1399,29 @@ height: 800px;
 					</div>
 					<div class="ebz-form-field">
 						<label>Selecione com quem você quer falar</label>
-						<div class="ebz-recipient-picker" id="ebz-recipient-picker">
-							<button type="button" class="ebz-recipient-chip" data-numero="5512988731064" data-nome="VictorSaaS">
-								<img class="ebz-no-hue" src="images/victor-foto.png" alt="">
-								<span>VictorSaaS</span>
+						<div class="ebz-recipient-dropdown" id="ebz-recipient-dropdown">
+							<button type="button" class="ebz-recipient-toggle" id="ebz-recipient-toggle">
+								<span class="ebz-recipient-toggle-inner" id="ebz-recipient-toggle-label">Escolher integrante da equipe</span>
+								<svg class="ebz-recipient-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10l5 5 5-5"></path></svg>
 							</button>
-							<button type="button" class="ebz-recipient-chip" data-numero="5547991915045" data-nome="Felix Bueno">
-								<img class="ebz-no-hue" src="images/felix-foto.png" alt="">
-								<span>Felix Bueno</span>
-							</button>
-							<button type="button" class="ebz-recipient-chip" data-numero="5511951077143" data-nome="Jonatas Cardoso">
-								<img class="ebz-no-hue" src="images/jonatas-foto.png" alt="">
-								<span>Jonatas Cardoso</span>
-							</button>
-							<button type="button" class="ebz-recipient-chip" data-numero="554784653051" data-nome="João Henrique">
-								<img class="ebz-no-hue" src="images/integrante4-foto.png" alt="">
-								<span>João Henrique</span>
-							</button>
+							<div class="ebz-recipient-menu" id="ebz-recipient-picker">
+								<button type="button" class="ebz-recipient-option" data-numero="5512988731064" data-nome="VictorSaaS">
+									<img class="ebz-no-hue" src="images/victor-foto.png" alt="">
+									<span>VictorSaaS</span>
+								</button>
+								<button type="button" class="ebz-recipient-option" data-numero="5547991915045" data-nome="Felix Bueno">
+									<img class="ebz-no-hue" src="images/felix-foto.png" alt="">
+									<span>Felix Bueno</span>
+								</button>
+								<button type="button" class="ebz-recipient-option" data-numero="5511951077143" data-nome="Jonatas Cardoso">
+									<img class="ebz-no-hue" src="images/jonatas-foto.png" alt="">
+									<span>Jonatas Cardoso</span>
+								</button>
+								<button type="button" class="ebz-recipient-option" data-numero="554784653051" data-nome="João Henrique">
+									<img class="ebz-no-hue" src="images/integrante4-foto.png" alt="">
+									<span>João Henrique</span>
+								</button>
+							</div>
 						</div>
 						<p class="ebz-recipient-warning" id="ebz-recipient-warning">Selecione um integrante da equipe acima antes de enviar.</p>
 					</div>
@@ -1946,18 +1961,36 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
 (function(){
 	var form = document.getElementById('ebz-orcamento-form');
 	if(!form) return;
-	var picker = document.getElementById('ebz-recipient-picker');
+	var dropdown = document.getElementById('ebz-recipient-dropdown');
+	var toggle = document.getElementById('ebz-recipient-toggle');
+	var toggleLabel = document.getElementById('ebz-recipient-toggle-label');
+	var menu = document.getElementById('ebz-recipient-picker');
 	var warning = document.getElementById('ebz-recipient-warning');
 	var selectedNumero = null;
 	var selectedNome = null;
 
-	if(picker){
-		picker.querySelectorAll('.ebz-recipient-chip').forEach(function(chip){
-			chip.addEventListener('click', function(){
-				picker.querySelectorAll('.ebz-recipient-chip').forEach(function(c){ c.classList.remove('ebz-selected'); });
-				chip.classList.add('ebz-selected');
-				selectedNumero = chip.getAttribute('data-numero');
-				selectedNome = chip.getAttribute('data-nome');
+	if(toggle && menu){
+		toggle.addEventListener('click', function(e){
+			e.stopPropagation();
+			menu.classList.toggle('ebz-open');
+			toggle.classList.toggle('ebz-open');
+		});
+		document.addEventListener('click', function(e){
+			if(!dropdown.contains(e.target)){
+				menu.classList.remove('ebz-open');
+				toggle.classList.remove('ebz-open');
+			}
+		});
+		menu.querySelectorAll('.ebz-recipient-option').forEach(function(opt){
+			opt.addEventListener('click', function(){
+				menu.querySelectorAll('.ebz-recipient-option').forEach(function(o){ o.classList.remove('ebz-selected'); });
+				opt.classList.add('ebz-selected');
+				selectedNumero = opt.getAttribute('data-numero');
+				selectedNome = opt.getAttribute('data-nome');
+				toggleLabel.innerHTML = '<img src="' + opt.querySelector('img').getAttribute('src') + '" alt="">' + selectedNome;
+				toggle.classList.add('ebz-selected');
+				menu.classList.remove('ebz-open');
+				toggle.classList.remove('ebz-open');
 				warning.classList.remove('ebz-show');
 			});
 		});
@@ -1985,7 +2018,9 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
 			(mensagem ? '\n*Mensagem:* ' + mensagem : '');
 		window.open('https://wa.me/' + selectedNumero + '?text=' + encodeURIComponent(texto), '_blank');
 		form.reset();
-		if(picker) picker.querySelectorAll('.ebz-recipient-chip').forEach(function(c){ c.classList.remove('ebz-selected'); });
+		if(menu) menu.querySelectorAll('.ebz-recipient-option').forEach(function(o){ o.classList.remove('ebz-selected'); });
+		if(toggle) toggle.classList.remove('ebz-selected');
+		if(toggleLabel) toggleLabel.textContent = 'Escolher integrante da equipe';
 		selectedNumero = null;
 		selectedNome = null;
 	});
@@ -2026,6 +2061,25 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
 	['touchstart','click','scroll'].forEach(function(evt){
 		document.addEventListener(evt, tryPlay, { once: true, passive: true });
 	});
+})();
+</script>
+<script>
+(function(){
+	if(!('IntersectionObserver' in window)) return;
+
+	var spinObserver = new IntersectionObserver(function(entries){
+		entries.forEach(function(entry){
+			entry.target.classList.toggle('ebz-spin', entry.isIntersecting);
+		});
+	}, { rootMargin: '0px', threshold: 0.15 });
+	document.querySelectorAll('.ebz-esteira-card').forEach(function(card){ spinObserver.observe(card); });
+
+	var teamObserver = new IntersectionObserver(function(entries){
+		entries.forEach(function(entry){
+			entry.target.classList.toggle('ebz-active', entry.isIntersecting);
+		});
+	}, { rootMargin: '-20% 0px -20% 0px', threshold: 0.4 });
+	document.querySelectorAll('.ebz-team-card').forEach(function(card){ teamObserver.observe(card); });
 })();
 </script>
 </body></html><!-- Page cached by LiteSpeed Cache 7.8.1 on 2026-08-12 13:34:01 -->
