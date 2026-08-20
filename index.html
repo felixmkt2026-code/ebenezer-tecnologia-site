@@ -1019,6 +1019,7 @@ height: 800px;
 				.ebz-esteira-info p{margin:0;font-size:12.5px;line-height:1.4;color:#d6d6de;max-width:260px;}
 				@keyframes ebz-esteira-scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 				@media(max-width:600px){.ebz-esteira-card{flex:0 0 250px;}}
+				@media(max-width:900px){.ebz-esteira-card::before{animation:none;background:conic-gradient(from 200deg,transparent 0deg,#8f6cf5 55deg,#5B6CF5 120deg,transparent 190deg,transparent 360deg);}}
 				</style>
 				<div class="ebz-section-head">
 					<span class="ebz-eyebrow">Exemplos de sites</span>
@@ -1354,6 +1355,72 @@ height: 800px;
 				</div>
 			</div>
 		</div>
+		<div id="valor" class="ebz-orcamento-section">
+			<div class="ebz-orcamento-card">
+				<span class="ebz-eyebrow">Vamos conversar?</span>
+				<h2>Solicite seu <span class="ebz-blue-degrade">orçamento</span></h2>
+				<p class="ebz-orcamento-sub">Preencha o formulário e fale diretamente com nosso time pelo WhatsApp.</p>
+				<form id="ebz-orcamento-form" class="ebz-form" novalidate>
+					<div class="ebz-form-row">
+						<div class="ebz-form-field">
+							<label for="ebz-f-nome">Nome</label>
+							<input id="ebz-f-nome" name="nome" type="text" required placeholder="Seu nome">
+						</div>
+						<div class="ebz-form-field">
+							<label for="ebz-f-contato">WhatsApp ou e-mail</label>
+							<input id="ebz-f-contato" name="contato" type="text" required placeholder="(00) 00000-0000">
+						</div>
+					</div>
+					<div class="ebz-form-field">
+						<label for="ebz-f-servico">Serviço de interesse</label>
+						<select id="ebz-f-servico" name="servico" required>
+							<option value="" disabled selected>Selecione uma opção</option>
+							<option>Site Institucional</option>
+							<option>Landing Page</option>
+							<option>Loja Virtual</option>
+							<option>Aplicativo Android</option>
+							<option>Aplicativo iOS</option>
+							<option>Sistema Personalizado</option>
+							<option>Outro</option>
+						</select>
+					</div>
+					<div class="ebz-form-field">
+						<label for="ebz-f-mensagem">Mensagem</label>
+						<textarea id="ebz-f-mensagem" name="mensagem" rows="4" placeholder="Conte um pouco sobre o seu projeto"></textarea>
+					</div>
+					<div class="ebz-form-field">
+						<label>Selecione com quem você quer falar</label>
+						<div class="ebz-recipient-picker" id="ebz-recipient-picker">
+							<button type="button" class="ebz-recipient-chip" data-numero="5512988731064" data-nome="VictorSaaS">
+								<img class="ebz-no-hue" src="images/victor-foto.png" alt="">
+								<span>VictorSaaS</span>
+							</button>
+							<button type="button" class="ebz-recipient-chip" data-numero="5547991915045" data-nome="Felix Bueno">
+								<img class="ebz-no-hue" src="images/felix-foto.png" alt="">
+								<span>Felix Bueno</span>
+							</button>
+							<button type="button" class="ebz-recipient-chip" data-numero="5511951077143" data-nome="Jonatas Cardoso">
+								<img class="ebz-no-hue" src="images/jonatas-foto.png" alt="">
+								<span>Jonatas Cardoso</span>
+							</button>
+							<button type="button" class="ebz-recipient-chip" data-numero="554784653051" data-nome="João Henrique">
+								<img class="ebz-no-hue" src="images/integrante4-foto.png" alt="">
+								<span>João Henrique</span>
+							</button>
+						</div>
+						<p class="ebz-recipient-warning" id="ebz-recipient-warning">Selecione um integrante da equipe acima antes de enviar.</p>
+					</div>
+					<button type="submit" class="ebz-orcamento-btn">Enviar pelo WhatsApp <svg viewBox="0 0 512 512" style="width:15px;height:15px;fill:#fff;"><path d="M476 3.2L12.4 270.4c-18.5 10.6-16.1 38.8 3.3 46.7l112.5 46.7c19.4 8.1 38.1-6.7 38.1-27.2v-59.3l232.2-165c11.3-8 21.7 4.7 12.3 15.1L228.5 372.5l-.2.1c-1.5 1.5-2.7 3.3-3.6 5.3-.9 2-1.4 4.1-1.5 6.2l-6.4 122.4c-.6 11.7 4.3 22.3 13 28.7 5.5 4.1 12.1 6.2 18.6 6.2 4.6 0 9.2-1.1 13.5-3.2 6.9-3.4 12.5-9.7 15.2-16.9L497.4 34.7C505.4 15.3 486.7-6.2 476 3.2z"></path></svg></button>
+				</form>
+			</div>
+			<div class="ebz-orcamento-benefits">
+				<div class="ebz-benefit"><svg viewBox="0 0 512 512"><path d="M505 174.8l-39.6-39.6c-9.4-9.4-24.6-9.4-33.9 0L192 374.7 80.6 263.2c-9.4-9.4-24.6-9.4-33.9 0L7 302.9c-9.4 9.4-9.4 24.6 0 34L175 505c9.4 9.4 24.6 9.4 33.9 0l296-296.2c9.4-9.5 9.4-24.7.1-34z"></path></svg><div><strong>Entrega ágil</strong><span>Landing pages em 1 a 2 semanas, sites institucionais em 2 a 4 semanas.</span></div></div>
+				<div class="ebz-benefit"><svg viewBox="0 0 512 512"><path d="M505 174.8l-39.6-39.6c-9.4-9.4-24.6-9.4-33.9 0L192 374.7 80.6 263.2c-9.4-9.4-24.6-9.4-33.9 0L7 302.9c-9.4 9.4-9.4 24.6 0 34L175 505c9.4 9.4 24.6 9.4 33.9 0l296-296.2c9.4-9.5 9.4-24.7.1-34z"></path></svg><div><strong>Suporte contínuo</strong><span>Manutenção, monitoramento e ajustes sempre que necessário após o lançamento.</span></div></div>
+				<div class="ebz-benefit"><svg viewBox="0 0 512 512"><path d="M505 174.8l-39.6-39.6c-9.4-9.4-24.6-9.4-33.9 0L192 374.7 80.6 263.2c-9.4-9.4-24.6-9.4-33.9 0L7 302.9c-9.4 9.4-9.4 24.6 0 34L175 505c9.4 9.4 24.6 9.4 33.9 0l296-296.2c9.4-9.5 9.4-24.7.1-34z"></path></svg><div><strong>Design exclusivo</strong><span>Um site com identidade única, feito sob medida para o seu negócio.</span></div></div>
+				<div class="ebz-benefit"><svg viewBox="0 0 512 512"><path d="M505 174.8l-39.6-39.6c-9.4-9.4-24.6-9.4-33.9 0L192 374.7 80.6 263.2c-9.4-9.4-24.6-9.4-33.9 0L7 302.9c-9.4 9.4-9.4 24.6 0 34L175 505c9.4 9.4 24.6 9.4 33.9 0l296-296.2c9.4-9.5 9.4-24.7.1-34z"></path></svg><div><strong>Performance e velocidade</strong><span>Site rápido e otimizado, pronto pra converter.</span></div></div>
+				<div class="ebz-benefit"><svg viewBox="0 0 512 512"><path d="M505 174.8l-39.6-39.6c-9.4-9.4-24.6-9.4-33.9 0L192 374.7 80.6 263.2c-9.4-9.4-24.6-9.4-33.9 0L7 302.9c-9.4 9.4-9.4 24.6 0 34L175 505c9.4 9.4 24.6 9.4 33.9 0l296-296.2c9.4-9.5 9.4-24.7.1-34z"></path></svg><div><strong>Responsividade</strong><span>Experiência perfeita em qualquer dispositivo que seus clientes usarem.</span></div></div>
+			</div>
+		</div>
 		<div id="faq" class="elementor-element elementor-element-5775db6c e-flex e-con-boxed e-con e-parent" data-id="5775db6c" data-element_type="container" data-e-type="container" data-settings="{" background_background":"classic"}"="">
 					<div class="e-con-inner">
 		<div class="elementor-element elementor-element-63bc6bb1 e-con-full e-flex e-con e-child" data-id="63bc6bb1" data-element_type="container" data-e-type="container">
@@ -1639,72 +1706,6 @@ height: 800px;
 				</div>
 					</div>
 				</div>
-		<div id="valor" class="ebz-orcamento-section">
-			<div class="ebz-orcamento-card">
-				<span class="ebz-eyebrow">Vamos conversar?</span>
-				<h2>Solicite seu <span class="ebz-blue-degrade">orçamento</span></h2>
-				<p class="ebz-orcamento-sub">Preencha o formulário e fale diretamente com nosso time pelo WhatsApp.</p>
-				<form id="ebz-orcamento-form" class="ebz-form" novalidate>
-					<div class="ebz-form-row">
-						<div class="ebz-form-field">
-							<label for="ebz-f-nome">Nome</label>
-							<input id="ebz-f-nome" name="nome" type="text" required placeholder="Seu nome">
-						</div>
-						<div class="ebz-form-field">
-							<label for="ebz-f-contato">WhatsApp ou e-mail</label>
-							<input id="ebz-f-contato" name="contato" type="text" required placeholder="(00) 00000-0000">
-						</div>
-					</div>
-					<div class="ebz-form-field">
-						<label for="ebz-f-servico">Serviço de interesse</label>
-						<select id="ebz-f-servico" name="servico" required>
-							<option value="" disabled selected>Selecione uma opção</option>
-							<option>Site Institucional</option>
-							<option>Landing Page</option>
-							<option>Loja Virtual</option>
-							<option>Aplicativo Android</option>
-							<option>Aplicativo iOS</option>
-							<option>Sistema Personalizado</option>
-							<option>Outro</option>
-						</select>
-					</div>
-					<div class="ebz-form-field">
-						<label for="ebz-f-mensagem">Mensagem</label>
-						<textarea id="ebz-f-mensagem" name="mensagem" rows="4" placeholder="Conte um pouco sobre o seu projeto"></textarea>
-					</div>
-					<div class="ebz-form-field">
-						<label>Selecione com quem você quer falar</label>
-						<div class="ebz-recipient-picker" id="ebz-recipient-picker">
-							<button type="button" class="ebz-recipient-chip" data-numero="5512988731064" data-nome="VictorSaaS">
-								<img class="ebz-no-hue" src="images/victor-foto.png" alt="">
-								<span>VictorSaaS</span>
-							</button>
-							<button type="button" class="ebz-recipient-chip" data-numero="5547991915045" data-nome="Felix Bueno">
-								<img class="ebz-no-hue" src="images/felix-foto.png" alt="">
-								<span>Felix Bueno</span>
-							</button>
-							<button type="button" class="ebz-recipient-chip" data-numero="5511951077143" data-nome="Jonatas Cardoso">
-								<img class="ebz-no-hue" src="images/jonatas-foto.png" alt="">
-								<span>Jonatas Cardoso</span>
-							</button>
-							<button type="button" class="ebz-recipient-chip" data-numero="554784653051" data-nome="João Henrique">
-								<img class="ebz-no-hue" src="images/integrante4-foto.png" alt="">
-								<span>João Henrique</span>
-							</button>
-						</div>
-						<p class="ebz-recipient-warning" id="ebz-recipient-warning">Selecione um integrante da equipe acima antes de enviar.</p>
-					</div>
-					<button type="submit" class="ebz-orcamento-btn">Enviar pelo WhatsApp <svg viewBox="0 0 512 512" style="width:15px;height:15px;fill:#fff;"><path d="M476 3.2L12.4 270.4c-18.5 10.6-16.1 38.8 3.3 46.7l112.5 46.7c19.4 8.1 38.1-6.7 38.1-27.2v-59.3l232.2-165c11.3-8 21.7 4.7 12.3 15.1L228.5 372.5l-.2.1c-1.5 1.5-2.7 3.3-3.6 5.3-.9 2-1.4 4.1-1.5 6.2l-6.4 122.4c-.6 11.7 4.3 22.3 13 28.7 5.5 4.1 12.1 6.2 18.6 6.2 4.6 0 9.2-1.1 13.5-3.2 6.9-3.4 12.5-9.7 15.2-16.9L497.4 34.7C505.4 15.3 486.7-6.2 476 3.2z"></path></svg></button>
-				</form>
-			</div>
-			<div class="ebz-orcamento-benefits">
-				<div class="ebz-benefit"><svg viewBox="0 0 512 512"><path d="M505 174.8l-39.6-39.6c-9.4-9.4-24.6-9.4-33.9 0L192 374.7 80.6 263.2c-9.4-9.4-24.6-9.4-33.9 0L7 302.9c-9.4 9.4-9.4 24.6 0 34L175 505c9.4 9.4 24.6 9.4 33.9 0l296-296.2c9.4-9.5 9.4-24.7.1-34z"></path></svg><div><strong>Entrega ágil</strong><span>Landing pages em 1 a 2 semanas, sites institucionais em 2 a 4 semanas.</span></div></div>
-				<div class="ebz-benefit"><svg viewBox="0 0 512 512"><path d="M505 174.8l-39.6-39.6c-9.4-9.4-24.6-9.4-33.9 0L192 374.7 80.6 263.2c-9.4-9.4-24.6-9.4-33.9 0L7 302.9c-9.4 9.4-9.4 24.6 0 34L175 505c9.4 9.4 24.6 9.4 33.9 0l296-296.2c9.4-9.5 9.4-24.7.1-34z"></path></svg><div><strong>Suporte contínuo</strong><span>Manutenção, monitoramento e ajustes sempre que necessário após o lançamento.</span></div></div>
-				<div class="ebz-benefit"><svg viewBox="0 0 512 512"><path d="M505 174.8l-39.6-39.6c-9.4-9.4-24.6-9.4-33.9 0L192 374.7 80.6 263.2c-9.4-9.4-24.6-9.4-33.9 0L7 302.9c-9.4 9.4-9.4 24.6 0 34L175 505c9.4 9.4 24.6 9.4 33.9 0l296-296.2c9.4-9.5 9.4-24.7.1-34z"></path></svg><div><strong>Design exclusivo</strong><span>Um site com identidade única, feito sob medida para o seu negócio.</span></div></div>
-				<div class="ebz-benefit"><svg viewBox="0 0 512 512"><path d="M505 174.8l-39.6-39.6c-9.4-9.4-24.6-9.4-33.9 0L192 374.7 80.6 263.2c-9.4-9.4-24.6-9.4-33.9 0L7 302.9c-9.4 9.4-9.4 24.6 0 34L175 505c9.4 9.4 24.6 9.4 33.9 0l296-296.2c9.4-9.5 9.4-24.7.1-34z"></path></svg><div><strong>Performance e velocidade</strong><span>Site rápido e otimizado, pronto pra converter.</span></div></div>
-				<div class="ebz-benefit"><svg viewBox="0 0 512 512"><path d="M505 174.8l-39.6-39.6c-9.4-9.4-24.6-9.4-33.9 0L192 374.7 80.6 263.2c-9.4-9.4-24.6-9.4-33.9 0L7 302.9c-9.4 9.4-9.4 24.6 0 34L175 505c9.4 9.4 24.6 9.4 33.9 0l296-296.2c9.4-9.5 9.4-24.7.1-34z"></path></svg><div><strong>Responsividade</strong><span>Experiência perfeita em qualquer dispositivo que seus clientes usarem.</span></div></div>
-			</div>
-		</div>
 		<div class="elementor-element elementor-element-a787a0d e-con-full e-flex e-con e-parent" data-id="a787a0d" data-element_type="container" data-e-type="container" data-settings="{" background_background":"classic"}"="">
 				<div class="elementor-element elementor-element-51b080a elementor-widget-mobile__width-inherit elementor-widget elementor-widget-image" data-id="51b080a" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
 															<img loading="lazy" decoding="async" width="2351" height="425" src="images/1-2312312312-1.png" class="attachment-full size-full wp-image-818" alt="" srcset="images/1-2312312312-1.png 2351w, images/1-2312312312-1-300x54.png 300w, images/1-2312312312-1-1024x185.png 1024w, images/1-2312312312-1-768x139.png 768w, images/1-2312312312-1-1536x278.png 1536w, images/1-2312312312-1-2048x370.png 2048w" sizes="(max-width: 2351px) 100vw, 2351px">															</div>
@@ -1736,8 +1737,8 @@ height: 800px;
 						<a href="#projetos">Projetos</a>
 					<a href="#modelos">Modelos de Site</a>
 					<a href="#equipe">Equipe</a>
-						<a href="#faq">FAQ</a>
 						<a href="#valor">Orçamento</a>
+						<a href="#faq">FAQ</a>
 					</div>
 					<div class="ebz-footer-col">
 						<p class="ebz-footer-heading">Serviços</p>
